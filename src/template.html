@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>정보보안기사 실기 문제은행</title>
+<meta name="description" content="정보보안기사 실기 13~29회 복원 기출 문제은행 · 연속 풀기 · 오답노트">
+<style>
+:root{
+  --bg:#f6f7f9; --surface:#ffffff; --surface-2:#f0f2f5; --text:#1b1f24; --muted:#5f6b7a;
+  --border:#dde2e8; --accent:#2f5bea; --accent-weak:#e6ecfd; --ok:#1f8a4c; --ok-weak:#e3f4ea;
+  --bad:#c7362f; --bad-weak:#fbe7e6; --ans:#fff8e1; --ans-border:#f0d48a; --shadow:0 1px 2px rgba(16,24,40,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1216; --surface:#171b21; --surface-2:#1f252d; --text:#e7ebf0; --muted:#98a3b3;
+    --border:#2b323c; --accent:#7c9cff; --accent-weak:#1e2a4a; --ok:#4cc38a; --ok-weak:#16302a;
+    --bad:#ff7a72; --bad-weak:#3a1d1c; --ans:#2a2414; --ans-border:#6b5a2a; --shadow:none;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1216; --surface:#171b21; --surface-2:#1f252d; --text:#e7ebf0; --muted:#98a3b3;
+  --border:#2b323c; --accent:#7c9cff; --accent-weak:#1e2a4a; --ok:#4cc38a; --ok-weak:#16302a;
+  --bad:#ff7a72; --bad-weak:#3a1d1c; --ans:#2a2414; --ans-border:#6b5a2a; --shadow:none;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{background:var(--bg);color:var(--text);font:15px/1.6 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:920px;margin:0 auto;padding:20px 16px 64px}
+header h1{font-size:22px;margin:0 0 4px;letter-spacing:-.3px}
+header p{margin:0;color:var(--muted);font-size:13.5px}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.icon-btn{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:8px;padding:6px 10px;cursor:pointer;font-size:13px;white-space:nowrap}
+.tabs{display:flex;gap:4px;margin:18px 0 12px;border-bottom:1px solid var(--border);overflow-x:auto}
+.tab{appearance:none;border:0;background:none;color:var(--muted);padding:10px 14px;font-size:15px;font-weight:600;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
+.tab[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent)}
+.tab .count{font-weight:500;font-size:12px;margin-left:4px;color:var(--muted)}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;box-shadow:var(--shadow)}
+.filters{display:grid;gap:10px}
+.row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.row-label{font-size:12.5px;color:var(--muted);width:44px;flex:none}
+.chip{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:999px;padding:4px 11px;font-size:13px;cursor:pointer;line-height:1.5}
+.chip[aria-pressed="true"]{background:var(--accent-weak);border-color:var(--accent);color:var(--accent);font-weight:600}
+select,input[type=search]{font:inherit;font-size:14px;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:6px 10px;min-width:0}
+input[type=search]{flex:1 1 180px}
+.toolbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;margin:14px 2px 10px}
+.toolbar .info{color:var(--muted);font-size:13.5px}
+.btn{font:inherit;font-size:14px;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:8px;padding:7px 13px;cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+:root[data-theme="dark"] .btn.primary{color:#0f1216}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn.primary{color:#0f1216}}
+.btn.ok{color:var(--ok);border-color:var(--ok)} .btn.ok:hover{background:var(--ok-weak)}
+.btn.bad{color:var(--bad);border-color:var(--bad)} .btn.bad:hover{background:var(--bad-weak)}
+.list{display:grid;gap:10px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow)}
+.card.known{border-left:4px solid var(--ok)} .card.unknown{border-left:4px solid var(--bad)}
+.meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:6px}
+.badge{font-size:12px;font-weight:700;color:var(--accent);background:var(--accent-weak);border-radius:6px;padding:1px 8px}
+.type{font-size:12px;color:var(--muted);border:1px solid var(--border);border-radius:6px;padding:0 7px}
+.tag{font-size:11.5px;color:var(--muted)}
+.q{font-size:16px;font-weight:600;margin:2px 0 10px;word-break:keep-all;overflow-wrap:anywhere}
+.actions{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.qbody{font-size:15.5px;line-height:1.7;margin:4px 0 12px;word-break:keep-all;overflow-wrap:anywhere}
+.qbody p{margin:0 0 6px;white-space:pre-wrap}
+.qbody pre{margin:8px 0;background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:10px 12px;overflow-x:auto;font:12.5px/1.55 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;white-space:pre;word-break:normal}
+.quiz-card .qbody{font-size:16.5px}
+.topic{font-size:12.5px;color:var(--muted);margin-bottom:6px}
+.answer{margin-top:10px;background:var(--ans);border:1px solid var(--ans-border);border-radius:8px;padding:10px 12px;font-size:14.5px;overflow-wrap:anywhere}
+.answer ul{margin:0;padding-left:18px}
+.answer[hidden]{display:none}
+.mark-state{font-size:12.5px;margin-left:auto;color:var(--muted)}
+.empty{text-align:center;color:var(--muted);padding:40px 10px}
+/* quiz */
+.quiz-card{min-height:260px;display:flex;flex-direction:column}
+.quiz-card .q{font-size:19px;margin:8px 0 16px}
+.progress{height:6px;background:var(--surface-2);border-radius:99px;overflow:hidden;margin:4px 0 14px}
+.progress>div{height:100%;background:var(--accent);width:0;transition:width .2s}
+.quiz-nav{display:flex;justify-content:space-between;gap:8px;margin-top:auto;padding-top:16px;flex-wrap:wrap}
+.quiz-nav .grp{display:flex;gap:6px;flex-wrap:wrap}
+.hint{font-size:12px;color:var(--muted);margin-top:10px;text-align:center}
+.stats{display:flex;gap:14px;font-size:13px;color:var(--muted);flex-wrap:wrap}
+.stats b{color:var(--text)}
+footer{margin-top:28px;font-size:12px;color:var(--muted);line-height:1.6}
+@media (max-width:560px){
+  .row-label{width:100%}
+  .quiz-card .q{font-size:17px}
+  .tab{padding:10px 10px;font-size:14px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>정보보안기사 실기 문제은행</h1>
+      <p>13~29회 복원 기출 <span id="total"></span>문항 · 실제 시험처럼 지문을 읽고 풀어 보세요 · 정답은 기본으로 가려져 있어요</p>
+    </div>
+    <button class="icon-btn" id="themeBtn" type="button" aria-label="테마 전환">🌓 테마</button>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab" role="tab" data-tab="bank" aria-selected="true">문제은행</button>
+    <button class="tab" role="tab" data-tab="quiz" aria-selected="false">연속 풀기</button>
+    <button class="tab" role="tab" data-tab="wrong" aria-selected="false">오답노트<span class="count" id="wrongCount"></span></button>
+  </nav>
+
+  <section class="panel filters" aria-label="필터">
+    <div class="row">
+      <span class="row-label">회차</span>
+      <select id="fRound" aria-label="회차 선택"></select>
+      <input type="search" id="fSearch" placeholder="키워드 검색 (예: IPSec, 쿠키, 위험)" aria-label="검색">
+    </div>
+    <div class="row" id="fType"><span class="row-label">유형</span></div>
+    <div class="row" id="fTag"><span class="row-label">영역</span></div>
+    <div class="row"><span class="row-label">상태</span>
+      <span id="fStatus"></span>
+    </div>
+  </section>
+
+  <!-- 문제은행 -->
+  <section id="tab-bank">
+    <div class="toolbar">
+      <span class="info" id="bankInfo"></span>
+      <div class="actions">
+        <button class="btn" id="toggleAll" type="button">전체 정답 보기</button>
+      </div>
+    </div>
+    <div class="list" id="bankList"></div>
+  </section>
+
+  <!-- 연속 풀기 -->
+  <section id="tab-quiz" hidden>
+    <div class="toolbar">
+      <span class="info" id="quizInfo"></span>
+      <div class="actions">
+        <button class="btn" id="shuffleBtn" type="button">🔀 섞기</button>
+        <button class="btn" id="orderBtn" type="button">↺ 순서대로</button>
+      </div>
+    </div>
+    <div class="progress"><div id="progressBar"></div></div>
+    <div id="quizBox"></div>
+    <p class="hint">단축키: <b>Space</b> 정답 보기/감추기 · <b>← →</b> 이전/다음 · <b>1</b> 알았음 · <b>2</b> 몰랐음</p>
+  </section>
+
+  <!-- 오답노트 -->
+  <section id="tab-wrong" hidden>
+    <div class="toolbar">
+      <span class="info" id="wrongInfo"></span>
+      <div class="actions">
+        <button class="btn" id="wrongQuiz" type="button">오답만 연속 풀기</button>
+        <button class="btn bad" id="resetMarks" type="button">기록 초기화</button>
+      </div>
+    </div>
+    <div class="list" id="wrongList"></div>
+  </section>
+
+  <footer>
+    <div class="stats" id="stats"></div>
+    <p>문항은 수험생 복원본(네이버 블로그 stereok2 회차별 문제분석)을 참고해 지문을 다시 쓰고 정답은 핵심 키워드로 요약한 것이라 실제 시험지와 다를 수 있습니다. 서술형은 키워드를 보고 직접 문장으로 답안을 써 보세요. 학습 기록은 이 브라우저에만 저장됩니다.</p>
+  </footer>
+</div>
+
+<script>
+/*__DATA__*/
+</script>
+<script>
+(function(){
+  const Q = window.QUESTIONS || [];
+  const $ = s => document.querySelector(s);
+  const store = {
+    get(k, d){ try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
+    set(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+  };
+  let marks = store.get('qb.marks', {});           // id -> 'known' | 'unknown'
+  const state = {
+    tab: 'bank', round: 'all', search: '', types: new Set(), tags: new Set(), status: 'all',
+    showAll: false, open: new Set(),
+    quiz: { list: [], idx: 0, shown: false, onlyWrong: false }
+  };
+
+  // ---------- theme ----------
+  const savedTheme = store.get('qb.theme', null);
+  if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+  $('#themeBtn').onclick = () => {
+    const cur = document.documentElement.getAttribute('data-theme')
+      || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next); store.set('qb.theme', next);
+  };
+
+  // ---------- filters UI ----------
+  $('#total').textContent = Q.length;
+  const rounds = [...new Set(Q.map(q => q.round))].sort((a,b) => b-a);
+  const sel = $('#fRound');
+  sel.innerHTML = '<option value="all">전체 회차</option><option value="recent">최근 3년 (24~29회)</option>'
+    + rounds.map(r => { const m = (Q.find(q => q.round===r).meta||'').split(',')[0]; return `<option value="${r}">${r}회${m ? ' · '+m : ''}</option>`; }).join('');
+  sel.onchange = () => { state.round = sel.value; refresh(true); };
+  $('#fSearch').oninput = e => { state.search = e.target.value.trim().toLowerCase(); refresh(true); };
+
+  function chips(container, values, set){
+    values.forEach(v => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'chip'; b.textContent = v; b.setAttribute('aria-pressed','false');
+      b.onclick = () => { set.has(v) ? set.delete(v) : set.add(v); b.setAttribute('aria-pressed', set.has(v)); refresh(true); };
+      container.appendChild(b);
+    });
+  }
+  chips($('#fType'), ['단답형','서술형','실무형'], state.types);
+  const tagOrder = ['위험관리','웹보안','네트워크','시스템','개인정보·법규','관제·IDS','메일보안','보안일반'];
+  const tagsPresent = tagOrder.filter(t => Q.some(q => q.tags.includes(t)));
+  chips($('#fTag'), tagsPresent, state.tags);
+
+  const statusOpts = [['all','전체'],['none','안 푼 문제'],['known','알았음'],['unknown','몰랐음']];
+  const fs = $('#fStatus'); fs.className = 'row'; fs.style.gap = '6px';
+  statusOpts.forEach(([v, label]) => {
+    const b = document.createElement('button'); b.type='button'; b.className='chip'; b.textContent=label;
+    b.setAttribute('aria-pressed', v==='all'); b.dataset.v = v;
+    b.onclick = () => { state.status = v; fs.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', c.dataset.v===v)); refresh(true); };
+    fs.appendChild(b);
+  });
+
+  function filtered(){
+    return Q.filter(q => {
+      if (state.round === 'recent' && q.round < 24) return false;
+      if (state.round !== 'all' && state.round !== 'recent' && q.round !== +state.round) return false;
+      if (state.types.size && !state.types.has(q.type)) return false;
+      if (state.tags.size && !q.tags.some(t => state.tags.has(t))) return false;
+      const m = marks[q.id];
+      if (state.status === 'none' && m) return false;
+      if ((state.status === 'known' || state.status === 'unknown') && m !== state.status) return false;
+      if (state.search && !(q.q + ' ' + q.full + ' ' + q.a + ' ' + q.tags.join(' ')).toLowerCase().includes(state.search)) return false;
+      return true;
+    });
+  }
+
+  // ---------- rendering helpers ----------
+  const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  function answerHTML(a){
+    const parts = a.split(/\s\/\s/).map(s => s.trim()).filter(Boolean);
+    return parts.length > 1 ? '<ul>' + parts.map(p => `<li>${esc(p)}</li>`).join('') + '</ul>' : esc(a);
+  }
+  function fullHTML(t){
+    const out=[]; const parts=t.split(/```/);
+    parts.forEach((seg,i)=>{
+      if(i%2===1){ out.push('<pre><code>'+esc(seg.replace(/^\n|\n$/g,''))+'</code></pre>'); return; }
+      seg.split('\n').forEach(line=>{ if(line.trim()) out.push('<p>'+esc(line)+'</p>'); });
+    });
+    return out.join('');
+  }
+  function markLabel(id){
+    const m = marks[id];
+    return m === 'known' ? '✓ 알았음' : m === 'unknown' ? '✗ 몰랐음' : '';
+  }
+  function setMark(id, v){
+    if (marks[id] === v) delete marks[id]; else marks[id] = v;
+    store.set('qb.marks', marks); updateCounts();
+  }
+  function cardHTML(q, open){
+    const m = marks[q.id] || '';
+    return `<article class="card ${m}" data-id="${q.id}">
+      <div class="meta"><span class="badge">${q.round}회 ${q.type} ${q.no}번</span>
+        ${q.tags.map(t => `<span class="tag">#${t}</span>`).join(' ')}</div>
+      <div class="qbody">${fullHTML(q.full)}</div>
+      <div class="actions">
+        <button class="btn primary" data-act="toggle" type="button" aria-expanded="${open}">${open ? '정답 감추기' : '정답 보기'}</button>
+        <button class="btn ok" data-act="known" type="button">알았음</button>
+        <button class="btn bad" data-act="unknown" type="button">몰랐음</button>
+        <span class="mark-state">${markLabel(q.id)}</span>
+      </div>
+      <div class="answer" ${open ? '' : 'hidden'}><div class="topic">주제: ${esc(q.q)}</div>${answerHTML(q.a)}</div>
+    </article>`;
+  }
+  function bindList(el, rerender){
+    el.onclick = e => {
+      const btn = e.target.closest('button[data-act]'); if (!btn) return;
+      const card = btn.closest('.card'); const id = card.dataset.id; const act = btn.dataset.act;
+      if (act === 'toggle'){
+        const ans = card.querySelector('.answer'); const show = ans.hidden;
+        ans.hidden = !show; btn.textContent = show ? '정답 감추기' : '정답 보기'; btn.setAttribute('aria-expanded', show);
+        show ? state.open.add(id) : state.open.delete(id);
+      } else {
+        setMark(id, act);
+        card.classList.remove('known','unknown'); if (marks[id]) card.classList.add(marks[id]);
+        card.querySelector('.mark-state').textContent = markLabel(id);
+        if (rerender) rerender();
+      }
+    };
+  }
+
+  // ---------- bank ----------
+  const PAGE = 60; let bankLimit = PAGE;
+  function renderBank(){
+    const list = filtered();
+    $('#bankInfo').textContent = `${list.length}문항`;
+    const shown = list.slice(0, bankLimit);
+    $('#bankList').innerHTML = shown.length
+      ? shown.map(q => cardHTML(q, state.showAll || state.open.has(q.id))).join('')
+        + (list.length > bankLimit ? `<button class="btn" id="more" type="button" style="justify-self:center">더 보기 (${list.length - bankLimit}개 남음)</button>` : '')
+      : '<div class="empty">조건에 맞는 문제가 없어요.</div>';
+    const more = $('#more'); if (more) more.onclick = () => { bankLimit += PAGE; renderBank(); };
+    $('#toggleAll').textContent = state.showAll ? '전체 정답 감추기' : '전체 정답 보기';
+  }
+  bindList($('#bankList'));
+  $('#toggleAll').onclick = () => { state.showAll = !state.showAll; if (!state.showAll) state.open.clear(); renderBank(); };
+
+  // ---------- quiz ----------
+  function buildQuiz(shuffle){
+    let list = state.quiz.onlyWrong ? Q.filter(q => marks[q.id] === 'unknown') : filtered();
+    list = list.slice();
+    if (shuffle) for (let i = list.length - 1; i > 0; i--){ const j = Math.floor(Math.random()*(i+1)); [list[i], list[j]] = [list[j], list[i]]; }
+    state.quiz.list = list; state.quiz.idx = 0; state.quiz.shown = false;
+  }
+  function renderQuiz(){
+    const { list, idx, shown } = state.quiz;
+    $('#quizInfo').textContent = (state.quiz.onlyWrong ? '오답노트 · ' : '') + (list.length ? `${idx+1} / ${list.length}` : '0문항');
+    $('#progressBar').style.width = list.length ? ((idx+1)/list.length*100) + '%' : '0';
+    if (!list.length){ $('#quizBox').innerHTML = '<div class="card empty">풀 문제가 없어요. 필터를 바꿔 보세요.</div>'; return; }
+    const q = list[idx]; const m = marks[q.id] || '';
+    $('#quizBox').innerHTML = `<article class="card quiz-card ${m}">
+      <div class="meta"><span class="badge">${q.round}회 ${q.type} ${q.no}번</span>
+        ${q.tags.map(t => `<span class="tag">#${t}</span>`).join(' ')}
+        <span class="mark-state">${markLabel(q.id)}</span></div>
+      <div class="qbody">${fullHTML(q.full)}</div>
+      <div class="actions"><button class="btn primary" id="qToggle" type="button" aria-expanded="${shown}">${shown ? '정답 감추기' : '정답 보기'}</button></div>
+      <div class="answer" ${shown ? '' : 'hidden'}><div class="topic">주제: ${esc(q.q)}</div>${answerHTML(q.a)}</div>
+      <div class="quiz-nav">
+        <div class="grp"><button class="btn" id="qPrev" type="button" ${idx===0?'disabled':''}>← 이전</button>
+          <button class="btn" id="qNext" type="button" ${idx===list.length-1?'disabled':''}>다음 →</button></div>
+        <div class="grp"><button class="btn ok" id="qKnown" type="button">알았음 (1)</button>
+          <button class="btn bad" id="qUnknown" type="button">몰랐음 (2)</button></div>
+      </div></article>`;
+    $('#qToggle').onclick = toggleQuiz; $('#qPrev').onclick = () => go(-1); $('#qNext').onclick = () => go(1);
+    $('#qKnown').onclick = () => markQuiz('known'); $('#qUnknown').onclick = () => markQuiz('unknown');
+  }
+  function toggleQuiz(){ state.quiz.shown = !state.quiz.shown; renderQuiz(); }
+  function go(d){ const n = state.quiz.idx + d; if (n < 0 || n >= state.quiz.list.length) return; state.quiz.idx = n; state.quiz.shown = false; renderQuiz(); }
+  function markQuiz(v){
+    const q = state.quiz.list[state.quiz.idx]; if (!q) return;
+    marks[q.id] = v; store.set('qb.marks', marks); updateCounts();
+    if (state.quiz.idx < state.quiz.list.length - 1) go(1); else renderQuiz();
+  }
+  $('#shuffleBtn').onclick = () => { buildQuiz(true); renderQuiz(); };
+  $('#orderBtn').onclick = () => { buildQuiz(false); renderQuiz(); };
+  document.addEventListener('keydown', e => {
+    if (state.tab !== 'quiz' || e.target.matches('input,select,textarea')) return;
+    if (e.key === ' '){ e.preventDefault(); toggleQuiz(); }
+    else if (e.key === 'ArrowRight') go(1);
+    else if (e.key === 'ArrowLeft') go(-1);
+    else if (e.key === '1') markQuiz('known');
+    else if (e.key === '2') markQuiz('unknown');
+  });
+
+  // ---------- wrong note ----------
+  function renderWrong(){
+    const list = Q.filter(q => marks[q.id] === 'unknown');
+    $('#wrongInfo').textContent = `몰랐음으로 표시한 ${list.length}문항`;
+    $('#wrongList').innerHTML = list.length ? list.map(q => cardHTML(q, state.open.has(q.id))).join('')
+      : '<div class="empty">아직 오답이 없어요. 문제를 풀면서 "몰랐음"을 누르면 여기에 모입니다.</div>';
+  }
+  bindList($('#wrongList'), () => renderWrong());
+  $('#wrongQuiz').onclick = () => { state.quiz.onlyWrong = true; buildQuiz(true); switchTab('quiz', true); };
+  $('#resetMarks').onclick = () => { if (confirm('알았음/몰랐음 기록을 모두 지울까요?')){ marks = {}; store.set('qb.marks', marks); updateCounts(); refresh(true); } };
+
+  // ---------- tabs & counts ----------
+  function updateCounts(){
+    const k = Object.values(marks).filter(v => v==='known').length;
+    const u = Object.values(marks).filter(v => v==='unknown').length;
+    $('#wrongCount').textContent = u ? u : '';
+    $('#stats').innerHTML = `<span>푼 문제 <b>${k+u}</b> / ${Q.length}</span><span>알았음 <b>${k}</b></span><span>몰랐음 <b>${u}</b></span>`;
+  }
+  function switchTab(t, keepQuiz){
+    state.tab = t;
+    document.querySelectorAll('.tab').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === t));
+    ['bank','quiz','wrong'].forEach(x => $('#tab-'+x).hidden = x !== t);
+    document.querySelector('.filters').hidden = t === 'wrong';
+    if (t === 'quiz' && !keepQuiz){ state.quiz.onlyWrong = false; buildQuiz(false); }
+    store.set('qb.tab', t);
+    refresh(false);
+  }
+  document.querySelectorAll('.tab').forEach(b => b.onclick = () => switchTab(b.dataset.tab));
+  function refresh(filterChanged){
+    if (filterChanged){ bankLimit = PAGE; if (state.tab === 'quiz'){ state.quiz.onlyWrong = false; buildQuiz(false); } }
+    if (state.tab === 'bank') renderBank();
+    else if (state.tab === 'quiz') renderQuiz();
+    else renderWrong();
+  }
+
+  updateCounts();
+  switchTab(store.get('qb.tab', 'bank'));
+})();
+</script>
+</body>
+</html>
