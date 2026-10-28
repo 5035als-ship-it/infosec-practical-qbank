@@ -1,0 +1,3889 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>정보보안기사 실기 문제은행</title>
+<meta name="description" content="정보보안기사 실기 13~29회 복원 기출 문제은행 · 연속 풀기 · 오답노트">
+<style>
+:root{
+  --bg:#f6f7f9; --surface:#ffffff; --surface-2:#f0f2f5; --text:#1b1f24; --muted:#5f6b7a;
+  --border:#dde2e8; --accent:#2f5bea; --accent-weak:#e6ecfd; --ok:#1f8a4c; --ok-weak:#e3f4ea;
+  --bad:#c7362f; --bad-weak:#fbe7e6; --ans:#fff8e1; --ans-border:#f0d48a; --shadow:0 1px 2px rgba(16,24,40,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1216; --surface:#171b21; --surface-2:#1f252d; --text:#e7ebf0; --muted:#98a3b3;
+    --border:#2b323c; --accent:#7c9cff; --accent-weak:#1e2a4a; --ok:#4cc38a; --ok-weak:#16302a;
+    --bad:#ff7a72; --bad-weak:#3a1d1c; --ans:#2a2414; --ans-border:#6b5a2a; --shadow:none;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1216; --surface:#171b21; --surface-2:#1f252d; --text:#e7ebf0; --muted:#98a3b3;
+  --border:#2b323c; --accent:#7c9cff; --accent-weak:#1e2a4a; --ok:#4cc38a; --ok-weak:#16302a;
+  --bad:#ff7a72; --bad-weak:#3a1d1c; --ans:#2a2414; --ans-border:#6b5a2a; --shadow:none;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{margin:0}
+body{background:var(--bg);color:var(--text);font:15px/1.6 -apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:920px;margin:0 auto;padding:20px 16px 64px}
+header h1{font-size:22px;margin:0 0 4px;letter-spacing:-.3px}
+header p{margin:0;color:var(--muted);font-size:13.5px}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.icon-btn{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:8px;padding:6px 10px;cursor:pointer;font-size:13px;white-space:nowrap}
+.tabs{display:flex;gap:4px;margin:18px 0 12px;border-bottom:1px solid var(--border);overflow-x:auto}
+.tab{appearance:none;border:0;background:none;color:var(--muted);padding:10px 14px;font-size:15px;font-weight:600;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
+.tab[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent)}
+.tab .count{font-weight:500;font-size:12px;margin-left:4px;color:var(--muted)}
+.panel{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;box-shadow:var(--shadow)}
+.filters{display:grid;gap:10px}
+.row{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.row-label{font-size:12.5px;color:var(--muted);width:44px;flex:none}
+.chip{border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:999px;padding:4px 11px;font-size:13px;cursor:pointer;line-height:1.5}
+.chip[aria-pressed="true"]{background:var(--accent-weak);border-color:var(--accent);color:var(--accent);font-weight:600}
+select,input[type=search]{font:inherit;font-size:14px;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:6px 10px;min-width:0}
+input[type=search]{flex:1 1 180px}
+.toolbar{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:8px;margin:14px 2px 10px}
+.toolbar .info{color:var(--muted);font-size:13.5px}
+.btn{font:inherit;font-size:14px;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:8px;padding:7px 13px;cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+:root[data-theme="dark"] .btn.primary{color:#0f1216}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .btn.primary{color:#0f1216}}
+.btn.ok{color:var(--ok);border-color:var(--ok)} .btn.ok:hover{background:var(--ok-weak)}
+.btn.bad{color:var(--bad);border-color:var(--bad)} .btn.bad:hover{background:var(--bad-weak)}
+.list{display:grid;gap:10px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 16px;box-shadow:var(--shadow)}
+.card.known{border-left:4px solid var(--ok)} .card.unknown{border-left:4px solid var(--bad)}
+.meta{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-bottom:6px}
+.badge{font-size:12px;font-weight:700;color:var(--accent);background:var(--accent-weak);border-radius:6px;padding:1px 8px}
+.type{font-size:12px;color:var(--muted);border:1px solid var(--border);border-radius:6px;padding:0 7px}
+.tag{font-size:11.5px;color:var(--muted)}
+.q{font-size:16px;font-weight:600;margin:2px 0 10px;word-break:keep-all;overflow-wrap:anywhere}
+.actions{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.answer{margin-top:10px;background:var(--ans);border:1px solid var(--ans-border);border-radius:8px;padding:10px 12px;font-size:14.5px;overflow-wrap:anywhere}
+.answer ul{margin:0;padding-left:18px}
+.answer[hidden]{display:none}
+.mark-state{font-size:12.5px;margin-left:auto;color:var(--muted)}
+.empty{text-align:center;color:var(--muted);padding:40px 10px}
+/* quiz */
+.quiz-card{min-height:260px;display:flex;flex-direction:column}
+.quiz-card .q{font-size:19px;margin:8px 0 16px}
+.progress{height:6px;background:var(--surface-2);border-radius:99px;overflow:hidden;margin:4px 0 14px}
+.progress>div{height:100%;background:var(--accent);width:0;transition:width .2s}
+.quiz-nav{display:flex;justify-content:space-between;gap:8px;margin-top:auto;padding-top:16px;flex-wrap:wrap}
+.quiz-nav .grp{display:flex;gap:6px;flex-wrap:wrap}
+.hint{font-size:12px;color:var(--muted);margin-top:10px;text-align:center}
+.stats{display:flex;gap:14px;font-size:13px;color:var(--muted);flex-wrap:wrap}
+.stats b{color:var(--text)}
+footer{margin-top:28px;font-size:12px;color:var(--muted);line-height:1.6}
+@media (max-width:560px){
+  .row-label{width:100%}
+  .quiz-card .q{font-size:17px}
+  .tab{padding:10px 10px;font-size:14px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>정보보안기사 실기 문제은행</h1>
+      <p>13~29회 복원 기출 <span id="total"></span>문항 · 정답은 기본으로 가려져 있어요</p>
+    </div>
+    <button class="icon-btn" id="themeBtn" type="button" aria-label="테마 전환">🌓 테마</button>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab" role="tab" data-tab="bank" aria-selected="true">문제은행</button>
+    <button class="tab" role="tab" data-tab="quiz" aria-selected="false">연속 풀기</button>
+    <button class="tab" role="tab" data-tab="wrong" aria-selected="false">오답노트<span class="count" id="wrongCount"></span></button>
+  </nav>
+
+  <section class="panel filters" aria-label="필터">
+    <div class="row">
+      <span class="row-label">회차</span>
+      <select id="fRound" aria-label="회차 선택"></select>
+      <input type="search" id="fSearch" placeholder="키워드 검색 (예: IPSec, 쿠키, 위험)" aria-label="검색">
+    </div>
+    <div class="row" id="fType"><span class="row-label">유형</span></div>
+    <div class="row" id="fTag"><span class="row-label">영역</span></div>
+    <div class="row"><span class="row-label">상태</span>
+      <span id="fStatus"></span>
+    </div>
+  </section>
+
+  <!-- 문제은행 -->
+  <section id="tab-bank">
+    <div class="toolbar">
+      <span class="info" id="bankInfo"></span>
+      <div class="actions">
+        <button class="btn" id="toggleAll" type="button">전체 정답 보기</button>
+      </div>
+    </div>
+    <div class="list" id="bankList"></div>
+  </section>
+
+  <!-- 연속 풀기 -->
+  <section id="tab-quiz" hidden>
+    <div class="toolbar">
+      <span class="info" id="quizInfo"></span>
+      <div class="actions">
+        <button class="btn" id="shuffleBtn" type="button">🔀 섞기</button>
+        <button class="btn" id="orderBtn" type="button">↺ 순서대로</button>
+      </div>
+    </div>
+    <div class="progress"><div id="progressBar"></div></div>
+    <div id="quizBox"></div>
+    <p class="hint">단축키: <b>Space</b> 정답 보기/감추기 · <b>← →</b> 이전/다음 · <b>1</b> 알았음 · <b>2</b> 몰랐음</p>
+  </section>
+
+  <!-- 오답노트 -->
+  <section id="tab-wrong" hidden>
+    <div class="toolbar">
+      <span class="info" id="wrongInfo"></span>
+      <div class="actions">
+        <button class="btn" id="wrongQuiz" type="button">오답만 연속 풀기</button>
+        <button class="btn bad" id="resetMarks" type="button">기록 초기화</button>
+      </div>
+    </div>
+    <div class="list" id="wrongList"></div>
+  </section>
+
+  <footer>
+    <div class="stats" id="stats"></div>
+    <p>문항은 수험생 복원본(네이버 블로그 stereok2 회차별 문제분석)을 바탕으로 주제와 핵심 키워드만 요약한 것이라 실제 시험지와 다를 수 있습니다. 서술형은 키워드를 보고 직접 문장으로 답안을 써 보세요. 학습 기록은 이 브라우저에만 저장됩니다.</p>
+  </footer>
+</div>
+
+<script>
+window.QUESTIONS = [
+ {
+  "id": "29-단1",
+  "round": 29,
+  "meta": "2025.07.26, 합격률 15.2%",
+  "type": "단답형",
+  "no": 1,
+  "q": "리눅스 PAM 모듈",
+  "a": "account, auth, session",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "29-단2",
+  "round": 29,
+  "meta": "2025.07.26, 합격률 15.2%",
+  "type": "단답형",
+  "no": 2,
+  "q": "윈도우 파일시스템",
+  "a": "NTFS",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "29-단3",
+  "round": 29,
+  "meta": "2025.07.26, 합격률 15.2%",
+  "type": "단답형",
+  "no": 3,
+  "q": "송신~수신 전 구간 암호화",
+  "a": "종단간 암호화(E2EE)",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "29-단4",
+  "round": 29,
+  "meta": "2025.07.26, 합격률 15.2%",
+  "type": "단답형",
+  "no": 4,
+  "q": "내부문서 유출 탐지 솔루션",
+  "a": "DLP",
+  "tags": [
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "29-단5",
+  "round": 29,
+  "meta": "2025.07.26, 합격률 15.2%",
+  "type": "단답형",
+  "no": 5,
+  "q": "strcpy 소스코드 취약점",
+  "a": "(스택) 버퍼 오버플로우, strcpy()",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "29-단6",
+  "round": 29,
+  "meta": "2025.07.26, 합격률 15.2%",
+  "type": "단답형",
+  "no": 6,
+  "q": "패스워드 해시 저장 파일",
+  "a": "/etc/shadow",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "29-단7",
+  "round": 29,
+  "meta": "2025.07.26, 합격률 15.2%",
+  "type": "단답형",
+  "no": 7,
+  "q": "DNS 전송 프로토콜·캐시·유지기간",
+  "a": "UDP(또는 TCP), Cache, TTL",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "29-단8",
+  "round": 29,
+  "meta": "2025.07.26, 합격률 15.2%",
+  "type": "단답형",
+  "no": 8,
+  "q": "Shellshock 로그로 생성한 b.php",
+  "a": "웹쉘",
+  "tags": [
+   "웹보안",
+   "시스템"
+  ]
+ },
+ {
+  "id": "29-단9",
+  "round": 29,
+  "meta": "2025.07.26, 합격률 15.2%",
+  "type": "단답형",
+  "no": 9,
+  "q": "위험분석 접근법",
+  "a": "베이스라인, 상세 위험분석, 복합 접근법",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "29-단10",
+  "round": 29,
+  "meta": "2025.07.26, 합격률 15.2%",
+  "type": "단답형",
+  "no": 10,
+  "q": "전기통신설비 이용 정보통신체제",
+  "a": "정보통신망",
+  "tags": [
+   "개인정보·법규"
+  ]
+ },
+ {
+  "id": "29-단11",
+  "round": 29,
+  "meta": "2025.07.26, 합격률 15.2%",
+  "type": "단답형",
+  "no": 11,
+  "q": "디렉터리 인덱싱 대응 시 삭제할 지시자",
+  "a": "Indexes",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "29-단12",
+  "round": 29,
+  "meta": "2025.07.26, 합격률 15.2%",
+  "type": "단답형",
+  "no": 12,
+  "q": "acct/pacct 확인 명령",
+  "a": "lastcomm",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "29-서13",
+  "round": 29,
+  "meta": "2025.07.26, 합격률 15.2%",
+  "type": "서술형",
+  "no": 13,
+  "q": "모바일 인증서 피닝",
+  "a": "MITM 방지 / 저장·검증·교체 / 우회: Frida 런타임 후킹, 앱 리패키징",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "29-서14",
+  "round": 29,
+  "meta": "2025.07.26, 합격률 15.2%",
+  "type": "서술형",
+  "no": 14,
+  "q": "PHP 파일업로드 (23회 동일)",
+  "a": "우회: Content-Type 변조, 확장자 변조(대소문자·이중확장자), Null 바이트 / 성공조건: 필터 통과, 업로드 크기 제한 통과, 실행 제한(AddType·FilesMatch) 미적용",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "29-서15",
+  "round": 29,
+  "meta": "2025.07.26, 합격률 15.2%",
+  "type": "서술형",
+  "no": 15,
+  "q": "네트워크 보안관제 시스템 구성요소",
+  "a": "에이전트, 정보수집 서버, 통합관제 시스템 (ESM: 에이전트·매니저·콘솔도 인정 가능)",
+  "tags": [
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "29-서16",
+  "round": 29,
+  "meta": "2025.07.26, 합격률 15.2%",
+  "type": "서술형",
+  "no": 16,
+  "q": "ISMS-P 위험처리 4가지",
+  "a": "회피, 전가, 감소(완화), 수용 + 각 사례",
+  "tags": [
+   "위험관리",
+   "개인정보·법규"
+  ]
+ },
+ {
+  "id": "29-실17",
+  "round": 29,
+  "meta": "2025.07.26, 합격률 15.2%",
+  "type": "실무형",
+  "no": 17,
+  "q": "윈도우 이벤트 로그 크기",
+  "a": "500B × 1,000건 × 30일 = 15,000,000B / 이벤트뷰어 → 로그 속성 → 최대 로그 크기",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "29-실18",
+  "round": 29,
+  "meta": "2025.07.26, 합격률 15.2%",
+  "type": "실무형",
+  "no": 18,
+  "q": "CCTV 사옥 외부/내부",
+  "a": "외부(공개된 장소): 법 25조 예외 사유, 안내판, 녹음 금지, 운영·관리 방침, 안전성 조치 / 내부(비공개): 15조 적용, 정보주체 동의 권장",
+  "tags": [
+   "개인정보·법규"
+  ]
+ },
+ {
+  "id": "28-단1",
+  "round": 28,
+  "meta": "2025.04.12, 합격률 22.3%",
+  "type": "단답형",
+  "no": 1,
+  "q": "Smurf, 반사서버 차단 패킷",
+  "a": "Smurf, Directed Broadcast, ICMP Echo Request",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "28-단2",
+  "round": 28,
+  "meta": "2025.04.12, 합격률 22.3%",
+  "type": "단답형",
+  "no": 2,
+  "q": "서버를 속여 내부 리소스 요청",
+  "a": "SSRF",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "28-단3",
+  "round": 28,
+  "meta": "2025.04.12, 합격률 22.3%",
+  "type": "단답형",
+  "no": 3,
+  "q": "VLAN 할당 방식·확인 명령",
+  "a": "정적 VLAN, 동적 VLAN, show vlan",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "28-단4",
+  "round": 28,
+  "meta": "2025.04.12, 합격률 22.3%",
+  "type": "단답형",
+  "no": 4,
+  "q": "JS 쿠키 접근 차단 속성",
+  "a": "HttpOnly",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "28-단5",
+  "round": 28,
+  "meta": "2025.04.12, 합격률 22.3%",
+  "type": "단답형",
+  "no": 5,
+  "q": "HTTP 응답 분할 개행 문자",
+  "a": "CR(%0D), LF(%0A)",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "28-단6",
+  "round": 28,
+  "meta": "2025.04.12, 합격률 22.3%",
+  "type": "단답형",
+  "no": 6,
+  "q": "록히드마틴 APT 7단계 방어",
+  "a": "사이버 킬 체인",
+  "tags": [
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "28-단7",
+  "round": 28,
+  "meta": "2025.04.12, 합격률 22.3%",
+  "type": "단답형",
+  "no": 7,
+  "q": "ps 대신 열린 파일 확인",
+  "a": "lsof",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "28-단8",
+  "round": 28,
+  "meta": "2025.04.12, 합격률 22.3%",
+  "type": "단답형",
+  "no": 8,
+  "q": "btmp 확인 명령",
+  "a": "lastb",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "28-단9",
+  "round": 28,
+  "meta": "2025.04.12, 합격률 22.3%",
+  "type": "단답형",
+  "no": 9,
+  "q": "자산 중요도 기준·그룹화",
+  "a": "가용성, 그룹핑",
+  "tags": [
+   "위험관리",
+   "시스템"
+  ]
+ },
+ {
+  "id": "28-단10",
+  "round": 28,
+  "meta": "2025.04.12, 합격률 22.3%",
+  "type": "단답형",
+  "no": 10,
+  "q": "위험관리 방법·절차 구체화 문서",
+  "a": "위험관리계획",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "28-단11",
+  "round": 28,
+  "meta": "2025.04.12, 합격률 22.3%",
+  "type": "단답형",
+  "no": 11,
+  "q": "ISMS-P 물리적 보안대책 3가지",
+  "a": "보호구역 지정, 출입통제, 정보시스템 보호, 보호설비, 반출입 통제 등",
+  "tags": [
+   "개인정보·법규"
+  ]
+ },
+ {
+  "id": "28-단12",
+  "round": 28,
+  "meta": "2025.04.12, 합격률 22.3%",
+  "type": "단답형",
+  "no": 12,
+  "q": "모바일 특정 화면 이동 기능",
+  "a": "딥링크",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "28-서13",
+  "round": 28,
+  "meta": "2025.04.12, 합격률 22.3%",
+  "type": "서술형",
+  "no": 13,
+  "q": "쉘 정의·기능 2가지",
+  "a": "명령 해석기 / 명령 해석·실행, 스크립트 프로그래밍, 환경 설정",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "28-서14",
+  "round": 28,
+  "meta": "2025.04.12, 합격률 22.3%",
+  "type": "서술형",
+  "no": 14,
+  "q": "NetBIOS 바인딩 (23회 동일)",
+  "a": "원격 공유자원 접근 위험 / ncpa.cpl → TCP/IP 고급 → WINS → NetBIOS over TCP/IP 사용 안 함",
+  "tags": [
+   "위험관리",
+   "네트워크",
+   "시스템"
+  ]
+ },
+ {
+  "id": "28-서15",
+  "round": 28,
+  "meta": "2025.04.12, 합격률 22.3%",
+  "type": "서술형",
+  "no": 15,
+  "q": "IPSec 정의·모드",
+  "a": "IP계층 AH·ESP·IKE / 터널(새 IP헤더, GW 간) · 전송(페이로드만, 호스트 간)",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "28-서16",
+  "round": 28,
+  "meta": "2025.04.12, 합격률 22.3%",
+  "type": "서술형",
+  "no": 16,
+  "q": "자산 중요도 산정 개념·기준",
+  "a": "C(유출)·I(위변조)·A(중단) 영향도, 최고 등급으로 산정",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "28-실17",
+  "round": 28,
+  "meta": "2025.04.12, 합격률 22.3%",
+  "type": "실무형",
+  "no": 17,
+  "q": "Oracle 감사로그",
+  "a": "audit_trail=NONE(미기록) → DB로 변경, 외부 저장 이유: 로그 위변조 방지·SIEM 연계",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "28-실18",
+  "round": 28,
+  "meta": "2025.04.12, 합격률 22.3%",
+  "type": "실무형",
+  "no": 18,
+  "q": "telnet/ftp root 로그인·배너 노출",
+  "a": "SSH/SFTP 전환, root 직접 로그인 차단(securetty·ftpusers), 배너 수정(issue.net·ftpd_banner)",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "27-단1",
+  "round": 27,
+  "meta": "2024.11.23, 합격률 29.7%",
+  "type": "단답형",
+  "no": 1,
+  "q": "접근통제 모델",
+  "a": "DAC, MAC, RBAC",
+  "tags": [
+   "보안일반"
+  ]
+ },
+ {
+  "id": "27-단2",
+  "round": 27,
+  "meta": "2024.11.23, 합격률 29.7%",
+  "type": "단답형",
+  "no": 2,
+  "q": "MAC으로 IP 얻는 프로토콜",
+  "a": "RARP",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "27-단3",
+  "round": 27,
+  "meta": "2024.11.23, 합격률 29.7%",
+  "type": "단답형",
+  "no": 3,
+  "q": "VLAN 구성 방식",
+  "a": "포트, MAC, 네트워크 주소, 프로토콜 기반",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "27-단4",
+  "round": 27,
+  "meta": "2024.11.23, 합격률 29.7%",
+  "type": "단답형",
+  "no": 4,
+  "q": "전자금융거래법 정보보호 책임자",
+  "a": "CISO",
+  "tags": [
+   "개인정보·법규"
+  ]
+ },
+ {
+  "id": "27-단5",
+  "round": 27,
+  "meta": "2024.11.23, 합격률 29.7%",
+  "type": "단답형",
+  "no": 5,
+  "q": "리눅스 로그",
+  "a": "utmp, wtmp, lastlog",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "27-단6",
+  "round": 27,
+  "meta": "2024.11.23, 합격률 29.7%",
+  "type": "단답형",
+  "no": 6,
+  "q": "닫힌 포트만 응답하는 스캔",
+  "a": "FIN, XMAS, NULL",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "27-단7",
+  "round": 27,
+  "meta": "2024.11.23, 합격률 29.7%",
+  "type": "단답형",
+  "no": 7,
+  "q": "SW 개발보안 취약점",
+  "a": "SQL Injection, XSS, OS 명령어 삽입",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "27-단8",
+  "round": 27,
+  "meta": "2024.11.23, 합격률 29.7%",
+  "type": "단답형",
+  "no": 8,
+  "q": "telnet 80 지원 메소드 확인",
+  "a": "OPTIONS",
+  "tags": [
+   "웹보안",
+   "시스템"
+  ]
+ },
+ {
+  "id": "27-단9",
+  "round": 27,
+  "meta": "2024.11.23, 합격률 29.7%",
+  "type": "단답형",
+  "no": 9,
+  "q": "패치 종류",
+  "a": "핫픽스, 업데이트",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "27-단10",
+  "round": 27,
+  "meta": "2024.11.23, 합격률 29.7%",
+  "type": "단답형",
+  "no": 10,
+  "q": "매니저-에이전트 관리 프로토콜",
+  "a": "SNMP",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "27-단11",
+  "round": 27,
+  "meta": "2024.11.23, 합격률 29.7%",
+  "type": "단답형",
+  "no": 11,
+  "q": "일정 위험 받아들임",
+  "a": "위험 수용",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "27-단12",
+  "round": 27,
+  "meta": "2024.11.23, 합격률 29.7%",
+  "type": "단답형",
+  "no": 12,
+  "q": "브로드캐스트 도메인 축소 LAN",
+  "a": "VLAN",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "27-서13",
+  "round": 27,
+  "meta": "2024.11.23, 합격률 29.7%",
+  "type": "서술형",
+  "no": 13,
+  "q": "복합 접근법 개념·장단점",
+  "a": "고위험=상세, 나머지=베이스라인 / 장: 정확성·속도 균형 / 단: 기준·관리 복잡",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "27-서14",
+  "round": 27,
+  "meta": "2024.11.23, 합격률 29.7%",
+  "type": "서술형",
+  "no": 14,
+  "q": "정보보호조치 지침 1.2.1·1.2.2",
+  "a": "방침 수립(목표·범위·책임, 법 요구사항 문서화) / 실행계획(예산·일정, 경영층 승인, CISO 반기 점검)",
+  "tags": [
+   "개인정보·법규"
+  ]
+ },
+ {
+  "id": "27-서15",
+  "round": 27,
+  "meta": "2024.11.23, 합격률 29.7%",
+  "type": "서술형",
+  "no": 15,
+  "q": "-rwxr-x--x 의미",
+  "a": "소유자 rwx, 그룹 r-x, 기타 --x",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "27-서16",
+  "round": 27,
+  "meta": "2024.11.23, 합격률 29.7%",
+  "type": "서술형",
+  "no": 16,
+  "q": "미러사이트 (21회 동일)",
+  "a": "Active-Active 실시간 / 장: RTO 즉시·RPO 0 / 단: 고비용·과부하 / RTO 최장: 콜드사이트",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "27-실17",
+  "round": 27,
+  "meta": "2024.11.23, 합격률 29.7%",
+  "type": "실무형",
+  "no": 17,
+  "q": "PreparedStatement 빈칸",
+  "a": "?, prepareStatement, setString, executeQuery()",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "27-실18",
+  "round": 27,
+  "meta": "2024.11.23, 합격률 29.7%",
+  "type": "실무형",
+  "no": 18,
+  "q": "NTP DDoS 대응 4가지",
+  "a": "4.2.8 이상 업그레이드, disable monitor, UDP 123 접근 제한, 큰 응답 패킷 차단",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "26-단1",
+  "round": 26,
+  "meta": "2024.08.10, 합격률 24.6%",
+  "type": "단답형",
+  "no": 1,
+  "q": "패스워드 최소 길이",
+  "a": "/etc/login.defs, PASS_MIN_LEN 8",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "26-단2",
+  "round": 26,
+  "meta": "2024.08.10, 합격률 24.6%",
+  "type": "단답형",
+  "no": 2,
+  "q": "CSMA/CA 타임아웃 신호",
+  "a": "RTS, CTS",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "26-단3",
+  "round": 26,
+  "meta": "2024.08.10, 합격률 24.6%",
+  "type": "단답형",
+  "no": 3,
+  "q": "DNS 질의 순서",
+  "a": "Recursive(Cache) → Authoritative",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "26-단4",
+  "round": 26,
+  "meta": "2024.08.10, 합격률 24.6%",
+  "type": "단답형",
+  "no": 4,
+  "q": "헤더 변조로 백엔드 직접 요청",
+  "a": "HTTP Request Smuggling",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "26-단5",
+  "round": 26,
+  "meta": "2024.08.10, 합격률 24.6%",
+  "type": "단답형",
+  "no": 5,
+  "q": "오판 유형",
+  "a": "오탐(FP), 미탐(FN)",
+  "tags": [
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "26-단6",
+  "round": 26,
+  "meta": "2024.08.10, 합격률 24.6%",
+  "type": "단답형",
+  "no": 6,
+  "q": "XML 삽입 대응 설계",
+  "a": "공통 검증, 필터링, (안전한) API",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "26-단7",
+  "round": 26,
+  "meta": "2024.08.10, 합격률 24.6%",
+  "type": "단답형",
+  "no": 7,
+  "q": "장기 지능형 표적 공격",
+  "a": "APT",
+  "tags": [
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "26-단8",
+  "round": 26,
+  "meta": "2024.08.10, 합격률 24.6%",
+  "type": "단답형",
+  "no": 8,
+  "q": "TCP 윈도우 0 공격",
+  "a": "Slow Read Attack",
+  "tags": [
+   "네트워크",
+   "시스템"
+  ]
+ },
+ {
+  "id": "26-단9",
+  "round": 26,
+  "meta": "2024.08.10, 합격률 24.6%",
+  "type": "단답형",
+  "no": 9,
+  "q": "XSS 유형",
+  "a": "Reflected, Stored, DOM based",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "26-단10",
+  "round": 26,
+  "meta": "2024.08.10, 합격률 24.6%",
+  "type": "단답형",
+  "no": 10,
+  "q": "IDS 유형",
+  "a": "HIDS, NIDS",
+  "tags": [
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "26-단11",
+  "round": 26,
+  "meta": "2024.08.10, 합격률 24.6%",
+  "type": "단답형",
+  "no": 11,
+  "q": "위험 구성 요소",
+  "a": "자산, 위협, 취약성",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "26-단12",
+  "round": 26,
+  "meta": "2024.08.10, 합격률 24.6%",
+  "type": "단답형",
+  "no": 12,
+  "q": "위험관리 단계",
+  "a": "위험관리 / 위험분석 → 위험평가 → 위험처리",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "26-서13",
+  "round": 26,
+  "meta": "2024.08.10, 합격률 24.6%",
+  "type": "서술형",
+  "no": 13,
+  "q": "UAC 팝업 [예] 비활성",
+  "a": "관리자 권한 실행 의도 / 관리자 계정 비활성·삭제, 시스템 파일 손상",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "26-서14",
+  "round": 26,
+  "meta": "2024.08.10, 합격률 24.6%",
+  "type": "서술형",
+  "no": 14,
+  "q": "개인정보 영향평가 고려사항 5",
+  "a": "개인정보 수, 제3자 제공 여부, 권리 침해 가능성, 민감·고유식별정보 처리 여부, 보유기간",
+  "tags": [
+   "개인정보·법규"
+  ]
+ },
+ {
+  "id": "26-서15",
+  "round": 26,
+  "meta": "2024.08.10, 합격률 24.6%",
+  "type": "서술형",
+  "no": 15,
+  "q": "Promiscuous 모드 (19회 동일)",
+  "a": "모든 패킷 수신 / 스니핑 / 암호화 통신, 스위치, -promisc 해제, 탐지 도구",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "26-서16",
+  "round": 26,
+  "meta": "2024.08.10, 합격률 24.6%",
+  "type": "서술형",
+  "no": 16,
+  "q": "XSS 정의·기법 2가지",
+  "a": "Reflected, Stored, DOM 중 2개 설명",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "26-실17",
+  "round": 26,
+  "meta": "2024.08.10, 합격률 24.6%",
+  "type": "실무형",
+  "no": 17,
+  "q": "DB 권한 관리",
+  "a": "금지 권한: CREATE/DROP USER, DROP ANY TABLE 등 / IP 제한, 시스템 테이블 접근 제한, PUBLIC Role 금지, REMOTE_OS_* FALSE",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "26-실18",
+  "round": 26,
+  "meta": "2024.08.10, 합격률 24.6%",
+  "type": "실무형",
+  "no": 18,
+  "q": "하트블리드 조치",
+  "a": "OpenSSL 1.0.1g 이상, Heartbeat 비활성 재컴파일 / 인증서 재발급, 사용자 비밀번호 변경 안내",
+  "tags": [
+   "웹보안",
+   "네트워크"
+  ]
+ },
+ {
+  "id": "25-단1",
+  "round": 25,
+  "meta": "2024.04.27, 합격률 11.3%",
+  "type": "단답형",
+  "no": 1,
+  "q": "윈도우 그룹",
+  "a": "Power Users, Backup Operators, Users",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "25-단2",
+  "round": 25,
+  "meta": "2024.04.27, 합격률 11.3%",
+  "type": "단답형",
+  "no": 2,
+  "q": "전자파 방사 도청 방지",
+  "a": "TEMPEST",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "25-단3",
+  "round": 25,
+  "meta": "2024.04.27, 합격률 11.3%",
+  "type": "단답형",
+  "no": 3,
+  "q": "IPSec 기능 3가지",
+  "a": "접근제어, 비연결형 무결성, 근원지 인증, 재전송 방지, 기밀성 등",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "25-단4",
+  "round": 25,
+  "meta": "2024.04.27, 합격률 11.3%",
+  "type": "단답형",
+  "no": 4,
+  "q": "활성 세션 가로채기",
+  "a": "세션 하이재킹",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "25-단5",
+  "round": 25,
+  "meta": "2024.04.27, 합격률 11.3%",
+  "type": "단답형",
+  "no": 5,
+  "q": "보안통제 유형",
+  "a": "예방 통제, 물리적 접근통제, 논리적 접근통제",
+  "tags": [
+   "위험관리",
+   "보안일반"
+  ]
+ },
+ {
+  "id": "25-단6",
+  "round": 25,
+  "meta": "2024.04.27, 합격률 11.3%",
+  "type": "단답형",
+  "no": 6,
+  "q": "sendmail access",
+  "a": "RELAY, DISCARD",
+  "tags": [
+   "메일보안"
+  ]
+ },
+ {
+  "id": "25-단7",
+  "round": 25,
+  "meta": "2024.04.27, 합격률 11.3%",
+  "type": "단답형",
+  "no": 7,
+  "q": "Burp·ZAP 류 도구",
+  "a": "웹 프록시",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "25-단8",
+  "round": 25,
+  "meta": "2024.04.27, 합격률 11.3%",
+  "type": "단답형",
+  "no": 8,
+  "q": "/26 서브넷 마스크 2진수",
+  "a": "11111111.11111111.11111111.11000000",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "25-단9",
+  "round": 25,
+  "meta": "2024.04.27, 합격률 11.3%",
+  "type": "단답형",
+  "no": 9,
+  "q": "무작위 입력 테스트",
+  "a": "퍼징(Fuzzing)",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "25-단10",
+  "round": 25,
+  "meta": "2024.04.27, 합격률 11.3%",
+  "type": "단답형",
+  "no": 10,
+  "q": "SSRF 대응",
+  "a": "화이트리스트, 블랙리스트",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "25-단11",
+  "round": 25,
+  "meta": "2024.04.27, 합격률 11.3%",
+  "type": "단답형",
+  "no": 11,
+  "q": "위험처리",
+  "a": "수용, 회피, 전가",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "25-단12",
+  "round": 25,
+  "meta": "2024.04.27, 합격률 11.3%",
+  "type": "단답형",
+  "no": 12,
+  "q": "2015 가트너 지능형 관제",
+  "a": "SOAR (SIEM 논란)",
+  "tags": [
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "25-서13",
+  "round": 25,
+  "meta": "2024.04.27, 합격률 11.3%",
+  "type": "서술형",
+  "no": 13,
+  "q": "SW 보안약점 진단 분석단계 산출물",
+  "a": "요구사항 정의서, 요구사항 추적표, 유스케이스 다이어그램, 유스케이스 명세서",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "25-서14",
+  "round": 25,
+  "meta": "2024.04.27, 합격률 11.3%",
+  "type": "서술형",
+  "no": 14,
+  "q": "Ping 이용 스니핑 탐지",
+  "a": "존재하지 않는 MAC으로 위조한 ICMP Echo Request → 응답 오면 promiscuous",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "25-서15",
+  "round": 25,
+  "meta": "2024.04.27, 합격률 11.3%",
+  "type": "서술형",
+  "no": 15,
+  "q": "기밀성 등급 M/L 설명",
+  "a": "M: 허가된 담당자만 / L: 내부 직원·공개",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "25-서16",
+  "round": 25,
+  "meta": "2024.04.27, 합격률 11.3%",
+  "type": "서술형",
+  "no": 16,
+  "q": "IDS 공격 탐지 시 행위 4가지",
+  "a": "경보, 로그 기록, 세션 차단, 타 시스템 연동(+정책 업데이트)",
+  "tags": [
+   "네트워크",
+   "시스템",
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "25-실17",
+  "round": 25,
+  "meta": "2024.04.27, 합격률 11.3%",
+  "type": "실무형",
+  "no": 17,
+  "q": "ARP 캐시 테이블",
+  "a": "arp -a / ARP Redirect(GW MAC 변조) / arp -s 192.168.100.1 00-0a-00-62-c6-09",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "25-실18",
+  "round": 25,
+  "meta": "2024.04.27, 합격률 11.3%",
+  "type": "실무형",
+  "no": 18,
+  "q": "PE 악성코드 분석 3방식",
+  "a": "자동(PEiD·YARA·Cuckoo), 반자동(샌드박스+디스어셈블러), 수동(정적 IDA·Ghidra / 동적 x64dbg)",
+  "tags": [
+   "시스템",
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "24-단1",
+  "round": 24,
+  "meta": "2023.11.25, 합격률 8%",
+  "type": "단답형",
+  "no": 1,
+  "q": "영향평가 위험도 산정 공식",
+  "a": "침해요인 발생 가능성, 법적 준거성, 2",
+  "tags": [
+   "위험관리",
+   "개인정보·법규"
+  ]
+ },
+ {
+  "id": "24-단2",
+  "round": 24,
+  "meta": "2023.11.25, 합격률 8%",
+  "type": "단답형",
+  "no": 2,
+  "q": "DB 암호화 방식",
+  "a": "API, Plug-in, TDE",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "24-단3",
+  "round": 24,
+  "meta": "2023.11.25, 합격률 8%",
+  "type": "단답형",
+  "no": 3,
+  "q": "LAN 스위칭",
+  "a": "Cut-through, Fragment-free, Store-and-forward",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "24-단4",
+  "round": 24,
+  "meta": "2023.11.25, 합격률 8%",
+  "type": "단답형",
+  "no": 4,
+  "q": "EAP + AES-CCMP",
+  "a": "WPA2",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "24-단5",
+  "round": 24,
+  "meta": "2023.11.25, 합격률 8%",
+  "type": "단답형",
+  "no": 5,
+  "q": "VLAN 할당",
+  "a": "정적(포트), 동적(MAC)",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "24-단6",
+  "round": 24,
+  "meta": "2023.11.25, 합격률 8%",
+  "type": "단답형",
+  "no": 6,
+  "q": "로봇 배제 파일",
+  "a": "robots.txt",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "24-단7",
+  "round": 24,
+  "meta": "2023.11.25, 합격률 8%",
+  "type": "단답형",
+  "no": 7,
+  "q": "ISO 31000 위험평가",
+  "a": "위험식별, 위험분석, 위험평가",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "24-단8",
+  "round": 24,
+  "meta": "2023.11.25, 합격률 8%",
+  "type": "단답형",
+  "no": 8,
+  "q": "문서 유출 탐지",
+  "a": "DLP",
+  "tags": [
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "24-단9",
+  "round": 24,
+  "meta": "2023.11.25, 합격률 8%",
+  "type": "단답형",
+  "no": 9,
+  "q": "숨겨진 프로세스 확인 경로",
+  "a": "/proc",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "24-단10",
+  "round": 24,
+  "meta": "2023.11.25, 합격률 8%",
+  "type": "단답형",
+  "no": 10,
+  "q": "아파치 로그 해석",
+  "a": "GET 파라미터, 200, Referer",
+  "tags": [
+   "웹보안",
+   "네트워크",
+   "시스템"
+  ]
+ },
+ {
+  "id": "24-단11",
+  "round": 24,
+  "meta": "2023.11.25, 합격률 8%",
+  "type": "단답형",
+  "no": 11,
+  "q": "가명처리 올림/내림",
+  "a": "랜덤 라운딩",
+  "tags": [
+   "개인정보·법규"
+  ]
+ },
+ {
+  "id": "24-단12",
+  "round": 24,
+  "meta": "2023.11.25, 합격률 8%",
+  "type": "단답형",
+  "no": 12,
+  "q": "JNDI Lookup 원격 실행",
+  "a": "Log4j",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "24-서13",
+  "round": 24,
+  "meta": "2023.11.25, 합격률 8%",
+  "type": "서술형",
+  "no": 13,
+  "q": "chmod -s / find -perm -4000 -2000",
+  "a": "특수비트 제거·검색 / root 권한 실행 악용 방지",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "24-서14",
+  "round": 24,
+  "meta": "2023.11.25, 합격률 8%",
+  "type": "서술형",
+  "no": 14,
+  "q": "hosts.equiv / .rhosts",
+  "a": "소유자 root(또는 해당 계정), 권한 600, \"+\" 제거",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "24-서15",
+  "round": 24,
+  "meta": "2023.11.25, 합격률 8%",
+  "type": "서술형",
+  "no": 15,
+  "q": "iptables 체인·룰",
+  "a": "INPUT/FORWARD/OUTPUT / NEW인데 SYN 아닌 패킷 로그",
+  "tags": [
+   "네트워크",
+   "시스템"
+  ]
+ },
+ {
+  "id": "24-서16",
+  "round": 24,
+  "meta": "2023.11.25, 합격률 8%",
+  "type": "서술형",
+  "no": 16,
+  "q": "SNMP 보안 4가지",
+  "a": "커뮤니티 스트링 변경, v3, ACL, RO 모드",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "24-실17",
+  "round": 24,
+  "meta": "2023.11.25, 합격률 8%",
+  "type": "실무형",
+  "no": 17,
+  "q": "4개 OS 패스워드 길이",
+  "a": "Solaris /etc/default/passwd PASSLENGTH, Linux login.defs PASS_MIN_LEN, AIX /etc/security/user minlen, HP-UX /etc/default/security MIN_PASSWORD_LENGTH",
+  "tags": [
+   "위험관리",
+   "네트워크",
+   "시스템"
+  ]
+ },
+ {
+  "id": "24-실18",
+  "round": 24,
+  "meta": "2023.11.25, 합격률 8%",
+  "type": "실무형",
+  "no": 18,
+  "q": "xinetd 설정",
+  "a": "no_access, only_from, instances, 09:00-18:00",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "23-단1",
+  "round": 23,
+  "meta": "2023.07.29, 합격률 약 2~3%, 역대 최난도",
+  "type": "단답형",
+  "no": 1,
+  "q": "IIS·DHCP 로그 경로",
+  "a": "HTTPERR, DHCP (난이도 조절용)",
+  "tags": [
+   "웹보안",
+   "시스템"
+  ]
+ },
+ {
+  "id": "23-단2",
+  "round": 23,
+  "meta": "2023.07.29, 합격률 약 2~3%, 역대 최난도",
+  "type": "단답형",
+  "no": 2,
+  "q": "x64 printf 인자 레지스터",
+  "a": "RDI, RSI, RDX (난이도 조절용)",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "23-단3",
+  "round": 23,
+  "meta": "2023.07.29, 합격률 약 2~3%, 역대 최난도",
+  "type": "단답형",
+  "no": 3,
+  "q": "동적 링킹",
+  "a": "Dynamic Linking, PLT, GOT (난이도 조절용)",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "23-단4",
+  "round": 23,
+  "meta": "2023.07.29, 합격률 약 2~3%, 역대 최난도",
+  "type": "단답형",
+  "no": 4,
+  "q": "ISMS-P 3대 영역",
+  "a": "관리체계 수립·운영, 보호대책 요구사항, 개인정보 처리단계별 요구사항",
+  "tags": [
+   "개인정보·법규"
+  ]
+ },
+ {
+  "id": "23-단5",
+  "round": 23,
+  "meta": "2023.07.29, 합격률 약 2~3%, 역대 최난도",
+  "type": "단답형",
+  "no": 5,
+  "q": "/var/log/messages 필드",
+  "a": "프로세스명, PID, 메시지",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "23-단6",
+  "round": 23,
+  "meta": "2023.07.29, 합격률 약 2~3%, 역대 최난도",
+  "type": "단답형",
+  "no": 6,
+  "q": "SQLi 대응 객체",
+  "a": "Prepared Statement",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "23-단7",
+  "round": 23,
+  "meta": "2023.07.29, 합격률 약 2~3%, 역대 최난도",
+  "type": "단답형",
+  "no": 7,
+  "q": "PAM 모듈",
+  "a": "auth, account, session",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "23-단8",
+  "round": 23,
+  "meta": "2023.07.29, 합격률 약 2~3%, 역대 최난도",
+  "type": "단답형",
+  "no": 8,
+  "q": "DDoS 훈련 패킷 생성 툴",
+  "a": "hping3",
+  "tags": [
+   "네트워크",
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "23-단9",
+  "round": 23,
+  "meta": "2023.07.29, 합격률 약 2~3%, 역대 최난도",
+  "type": "단답형",
+  "no": 9,
+  "q": "Tripwire / Tenable 스캐너",
+  "a": "무결성, Nessus",
+  "tags": [
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "23-단10",
+  "round": 23,
+  "meta": "2023.07.29, 합격률 약 2~3%, 역대 최난도",
+  "type": "단답형",
+  "no": 10,
+  "q": "CVE-2014-0160",
+  "a": "하트블리드",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "23-단11",
+  "round": 23,
+  "meta": "2023.07.29, 합격률 약 2~3%, 역대 최난도",
+  "type": "단답형",
+  "no": 11,
+  "q": "위험관리 3단계",
+  "a": "위험분석, 위험평가",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "23-단12",
+  "round": 23,
+  "meta": "2023.07.29, 합격률 약 2~3%, 역대 최난도",
+  "type": "단답형",
+  "no": 12,
+  "q": "정보자산 분석 절차",
+  "a": "자산 식별, 중요도 평가",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "23-서13",
+  "round": 23,
+  "meta": "2023.07.29, 합격률 약 2~3%, 역대 최난도",
+  "type": "서술형",
+  "no": 13,
+  "q": "PHP 파일업로드",
+  "a": "(29회 서14와 동일)",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "23-서14",
+  "round": 23,
+  "meta": "2023.07.29, 합격률 약 2~3%, 역대 최난도",
+  "type": "서술형",
+  "no": 14,
+  "q": "TCP 플래그",
+  "a": "SYN(연결·순서 동기화), ACK(수신 확인), FIN(정상 종료), RST(강제 종료)",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "23-서15",
+  "round": 23,
+  "meta": "2023.07.29, 합격률 약 2~3%, 역대 최난도",
+  "type": "서술형",
+  "no": 15,
+  "q": "NetBIOS 바인딩",
+  "a": "(28회 서14와 동일)",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "23-서16",
+  "round": 23,
+  "meta": "2023.07.29, 합격률 약 2~3%, 역대 최난도",
+  "type": "서술형",
+  "no": 16,
+  "q": "Referer·Cache-control: max-age=0",
+  "a": "HTTP GET Flooding with Cache-Control (CC Attack) + 판단 근거",
+  "tags": [
+   "웹보안",
+   "네트워크"
+  ]
+ },
+ {
+  "id": "23-실17",
+  "round": 23,
+  "meta": "2023.07.29, 합격률 약 2~3%, 역대 최난도",
+  "type": "실무형",
+  "no": 17,
+  "q": "소상공인 안전성 확보조치",
+  "a": "권한 변경·말소, 기록 3년, 계정 공유 금지, 비밀번호 규칙 / IP 제한·탐지, 유출 방지, 모바일 보호",
+  "tags": [
+   "개인정보·법규",
+   "네트워크",
+   "시스템"
+  ]
+ },
+ {
+  "id": "23-실18",
+  "round": 23,
+  "meta": "2023.07.29, 합격률 약 2~3%, 역대 최난도",
+  "type": "실무형",
+  "no": 18,
+  "q": "named.conf master/slave",
+  "a": "type master + allow-update / type slave + masters",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "22-단1",
+  "round": 22,
+  "meta": "2023.04.22, 합격률 16.1%, 현행 배점 첫 회",
+  "type": "단답형",
+  "no": 1,
+  "q": "라우팅 프로토콜",
+  "a": "RIP, OSPF, EIGRP",
+  "tags": [
+   "네트워크",
+   "메일보안"
+  ]
+ },
+ {
+  "id": "22-단2",
+  "round": 22,
+  "meta": "2023.04.22, 합격률 16.1%, 현행 배점 첫 회",
+  "type": "단답형",
+  "no": 2,
+  "q": "유닉스 로그",
+  "a": "lastlog, sulog, acct/pacct",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "22-단3",
+  "round": 22,
+  "meta": "2023.04.22, 합격률 16.1%, 현행 배점 첫 회",
+  "type": "단답형",
+  "no": 3,
+  "q": "/etc/passwd 필드",
+  "a": "GID, 홈 디렉터리, 로그인 쉘",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "22-단4",
+  "round": 22,
+  "meta": "2023.04.22, 합격률 16.1%, 현행 배점 첫 회",
+  "type": "단답형",
+  "no": 4,
+  "q": "HTTP 응답 분할 개행",
+  "a": "CR, LF",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "22-단5",
+  "round": 22,
+  "meta": "2023.04.22, 합격률 16.1%, 현행 배점 첫 회",
+  "type": "단답형",
+  "no": 5,
+  "q": "PHP 파일 삽입 대응",
+  "a": "include/require, php.ini, allow_url_fopen Off",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "22-단6",
+  "round": 22,
+  "meta": "2023.04.22, 합격률 16.1%, 현행 배점 첫 회",
+  "type": "단답형",
+  "no": 6,
+  "q": "Snort threshold type",
+  "a": "limit, threshold, both",
+  "tags": [
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "22-단7",
+  "round": 22,
+  "meta": "2023.04.22, 합격률 16.1%, 현행 배점 첫 회",
+  "type": "단답형",
+  "no": 7,
+  "q": "ARP request 목적지",
+  "a": "FF:FF:FF:FF:FF:FF",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "22-단8",
+  "round": 22,
+  "meta": "2023.04.22, 합격률 16.1%, 현행 배점 첫 회",
+  "type": "단답형",
+  "no": 8,
+  "q": "DNS",
+  "a": "UDP/TCP, Cache, TTL",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "22-단9",
+  "round": 22,
+  "meta": "2023.04.22, 합격률 16.1%, 현행 배점 첫 회",
+  "type": "단답형",
+  "no": 9,
+  "q": "소스 미확인 / 확인 테스트",
+  "a": "블랙박스, 화이트박스",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "22-단10",
+  "round": 22,
+  "meta": "2023.04.22, 합격률 16.1%, 현행 배점 첫 회",
+  "type": "단답형",
+  "no": 10,
+  "q": "DB 질의 설계",
+  "a": "최소권한, 동적, 입력값",
+  "tags": [
+   "웹보안",
+   "시스템"
+  ]
+ },
+ {
+  "id": "22-단11",
+  "round": 22,
+  "meta": "2023.04.22, 합격률 16.1%, 현행 배점 첫 회",
+  "type": "단답형",
+  "no": 11,
+  "q": "접속기록 보관",
+  "a": "1년, 5만명, 민감정보",
+  "tags": [
+   "개인정보·법규"
+  ]
+ },
+ {
+  "id": "22-단12",
+  "round": 22,
+  "meta": "2023.04.22, 합격률 16.1%, 현행 배점 첫 회",
+  "type": "단답형",
+  "no": 12,
+  "q": "대책·잔여위험·목표수준",
+  "a": "정보보호대책, 잔여위험, DoA",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "22-서13",
+  "round": 22,
+  "meta": "2023.04.22, 합격률 16.1%, 현행 배점 첫 회",
+  "type": "서술형",
+  "no": 13,
+  "q": "BYOD 보안기술",
+  "a": "MDM, 컨테이너화, 모바일 가상화",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "22-서14",
+  "round": 22,
+  "meta": "2023.04.22, 합격률 16.1%, 현행 배점 첫 회",
+  "type": "서술형",
+  "no": 14,
+  "q": "기준선·상세 위험분석",
+  "a": "개념·장점·단점",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "22-서15",
+  "round": 22,
+  "meta": "2023.04.22, 합격률 16.1%, 현행 배점 첫 회",
+  "type": "서술형",
+  "no": 15,
+  "q": "쿠키 속성",
+  "a": "Secure(스니핑 대응), HttpOnly(XSS 대응), Expires(재사용 최소화)",
+  "tags": [
+   "웹보안",
+   "네트워크"
+  ]
+ },
+ {
+  "id": "22-서16",
+  "round": 22,
+  "meta": "2023.04.22, 합격률 16.1%, 현행 배점 첫 회",
+  "type": "서술형",
+  "no": 16,
+  "q": "DNS 증폭 IP 기법",
+  "a": "IP 스푸핑 + ANY 쿼리 / 출처 은닉, 적은 자원으로 증폭",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "22-실17",
+  "round": 22,
+  "meta": "2023.04.22, 합격률 16.1%, 현행 배점 첫 회",
+  "type": "실무형",
+  "no": 17,
+  "q": "`1' or '1'='1'#` 로그",
+  "a": "SQL Injection / 서버측 필터링, PreparedStatement",
+  "tags": [
+   "웹보안",
+   "시스템"
+  ]
+ },
+ {
+  "id": "22-실18",
+  "round": 22,
+  "meta": "2023.04.22, 합격률 16.1%, 현행 배점 첫 회",
+  "type": "실무형",
+  "no": 18,
+  "q": "기술적·관리적 보호조치 5가지",
+  "a": "접근통제, 접속기록 위변조 방지, 암호화, 악성프로그램 방지, 물리적 접근 방지",
+  "tags": [
+   "개인정보·법규",
+   "보안일반",
+   "시스템"
+  ]
+ },
+ {
+  "id": "21-단1",
+  "round": 21,
+  "meta": "2022.11.26, 합격률 13.8%",
+  "type": "단답형",
+  "no": 1,
+  "q": "access.db 생성",
+  "a": "makemap hash",
+  "tags": [
+   "메일보안"
+  ]
+ },
+ {
+  "id": "21-단2",
+  "round": 21,
+  "meta": "2022.11.26, 합격률 13.8%",
+  "type": "단답형",
+  "no": 2,
+  "q": "라우터 SNMP 비활성",
+  "a": "no snmp-server",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "21-단3",
+  "round": 21,
+  "meta": "2022.11.26, 합격률 13.8%",
+  "type": "단답형",
+  "no": 3,
+  "q": "수용 가능 위험 수준 / 낮은 위험 방치?",
+  "a": "DoA / X(지속 모니터링)",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "21-단4",
+  "round": 21,
+  "meta": "2022.11.26, 합격률 13.8%",
+  "type": "단답형",
+  "no": 4,
+  "q": "BCP 2~4단계",
+  "a": "BIA, 복구전략 개발, 복구계획 수립",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "21-단5",
+  "round": 21,
+  "meta": "2022.11.26, 합격률 13.8%",
+  "type": "단답형",
+  "no": 5,
+  "q": "장기 지속 공격",
+  "a": "APT",
+  "tags": [
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "21-단6",
+  "round": 21,
+  "meta": "2022.11.26, 합격률 13.8%",
+  "type": "단답형",
+  "no": 6,
+  "q": "불완전한 암호화 저장 점검",
+  "a": "SQL Query, 세션ID, 암호화 알고리즘",
+  "tags": [
+   "웹보안",
+   "네트워크"
+  ]
+ },
+ {
+  "id": "21-단7",
+  "round": 21,
+  "meta": "2022.11.26, 합격률 13.8%",
+  "type": "단답형",
+  "no": 7,
+  "q": "IP계층 VPN 세부",
+  "a": "IPSec, AH, ESP",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "21-단8",
+  "round": 21,
+  "meta": "2022.11.26, 합격률 13.8%",
+  "type": "단답형",
+  "no": 8,
+  "q": "정성적 위험분석",
+  "a": "델파이법, 시나리오법, 퍼지행렬법",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "21-단9",
+  "round": 21,
+  "meta": "2022.11.26, 합격률 13.8%",
+  "type": "단답형",
+  "no": 9,
+  "q": "익스플로잇",
+  "a": "Shell Code, 0x90, JMP ESP",
+  "tags": [
+   "네트워크",
+   "시스템"
+  ]
+ },
+ {
+  "id": "21-단10",
+  "round": 21,
+  "meta": "2022.11.26, 합격률 13.8%",
+  "type": "단답형",
+  "no": 10,
+  "q": "업로드 크기 제한",
+  "a": "LimitRequestBody",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "21-서11",
+  "round": 21,
+  "meta": "2022.11.26, 합격률 13.8%",
+  "type": "서술형",
+  "no": 11,
+  "q": "오용/이상 탐지",
+  "a": "정의, 오용 장점(오탐 낮음)·단점(신규 공격 탐지 불가)",
+  "tags": [
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "21-서12",
+  "round": 21,
+  "meta": "2022.11.26, 합격률 13.8%",
+  "type": "서술형",
+  "no": 12,
+  "q": "미러사이트",
+  "a": "정의·장단점·콜드사이트",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "21-서13",
+  "round": 21,
+  "meta": "2022.11.26, 합격률 13.8%",
+  "type": "서술형",
+  "no": 13,
+  "q": "비밀번호 작성규칙 3가지",
+  "a": "2종 10자리/3종 8자리, 추측 어려운 값, 반기 1회 변경",
+  "tags": [
+   "개인정보·법규"
+  ]
+ },
+ {
+  "id": "21-실14",
+  "round": 21,
+  "meta": "2022.11.26, 합격률 13.8%",
+  "type": "실무형",
+  "no": 14,
+  "q": "SYN 2초 30회 차단 iptables",
+  "a": "-A INPUT -p tcp --syn --dport 80 -m recent --update --seconds 2 --hitcount 30 -j DROP",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "21-실15",
+  "round": 21,
+  "meta": "2022.11.26, 합격률 13.8%",
+  "type": "실무형",
+  "no": 15,
+  "q": "SLE·ALE·ROI",
+  "a": "SLE=AV×EF, ALE=SLE×ARO, ROI=(ALE−X)/X×100",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "21-실16",
+  "round": 21,
+  "meta": "2022.11.26, 합격률 13.8%",
+  "type": "실무형",
+  "no": 16,
+  "q": "DNS 존 파일",
+  "a": "master/slave, allow-update, masters, A 레코드",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "20-단1",
+  "round": 20,
+  "meta": "2022.08.13",
+  "type": "단답형",
+  "no": 1,
+  "q": "지원 메소드 확인",
+  "a": "OPTIONS",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "20-단2",
+  "round": 20,
+  "meta": "2022.08.13",
+  "type": "단답형",
+  "no": 2,
+  "q": "위험분석 기법",
+  "a": "델파이, 시나리오, 순위결정법",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "20-단3",
+  "round": 20,
+  "meta": "2022.08.13",
+  "type": "단답형",
+  "no": 3,
+  "q": "위험분석 접근법",
+  "a": "베이스라인, 상세, 복합",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "20-단4",
+  "round": 20,
+  "meta": "2022.08.13",
+  "type": "단답형",
+  "no": 4,
+  "q": "접근통제",
+  "a": "DAC, MAC, RBAC",
+  "tags": [
+   "보안일반"
+  ]
+ },
+ {
+  "id": "20-단5",
+  "round": 20,
+  "meta": "2022.08.13",
+  "type": "단답형",
+  "no": 5,
+  "q": "IDS 오판",
+  "a": "오탐, 미탐",
+  "tags": [
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "20-단6",
+  "round": 20,
+  "meta": "2022.08.13",
+  "type": "단답형",
+  "no": 6,
+  "q": "IPSec 서비스 3가지",
+  "a": "기밀성, 근원지 인증, 접근제어, 무결성, 재전송 방지 등",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "20-단7",
+  "round": 20,
+  "meta": "2022.08.13",
+  "type": "단답형",
+  "no": 7,
+  "q": "사토시 나카모토",
+  "a": "비트코인, 블록체인, 채굴",
+  "tags": [
+   "보안일반"
+  ]
+ },
+ {
+  "id": "20-단8",
+  "round": 20,
+  "meta": "2022.08.13",
+  "type": "단답형",
+  "no": 8,
+  "q": "디렉터리 인덱싱",
+  "a": "Indexes 삭제",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "20-단9",
+  "round": 20,
+  "meta": "2022.08.13",
+  "type": "단답형",
+  "no": 9,
+  "q": "CNAME 미삭제 악용",
+  "a": "서브도메인 하이재킹(테이크오버)",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "20-단10",
+  "round": 20,
+  "meta": "2022.08.13",
+  "type": "단답형",
+  "no": 10,
+  "q": "ISMS-P 물리 보호대책",
+  "a": "보호구역, 출입통제, 반출입 통제 등",
+  "tags": [
+   "개인정보·법규"
+  ]
+ },
+ {
+  "id": "20-서11",
+  "round": 20,
+  "meta": "2022.08.13",
+  "type": "서술형",
+  "no": 11,
+  "q": "개인정보 수집 가능 경우 4가지",
+  "a": "동의, 법률 규정, 공공기관 소관업무, 계약 이행, 급박한 이익, 정당한 이익",
+  "tags": [
+   "개인정보·법규"
+  ]
+ },
+ {
+  "id": "20-서12",
+  "round": 20,
+  "meta": "2022.08.13",
+  "type": "서술형",
+  "no": 12,
+  "q": "스위칭 허브 기능·원리",
+  "a": "Learning, Forwarding, Filtering, Flooding, Aging",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "20-서13",
+  "round": 20,
+  "meta": "2022.08.13",
+  "type": "서술형",
+  "no": 13,
+  "q": "Snort anonymous FTP 탐지",
+  "a": "대소문자 혼합으로 우회 시도 → nocase로 탐지, 위험·대응 설명",
+  "tags": [
+   "위험관리",
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "20-실14",
+  "round": 20,
+  "meta": "2022.08.13",
+  "type": "실무형",
+  "no": 14,
+  "q": "스팸 릴레이 설정",
+  "a": "sendmail.cf, REJECT, makemap, access.db",
+  "tags": [
+   "메일보안"
+  ]
+ },
+ {
+  "id": "20-실15",
+  "round": 20,
+  "meta": "2022.08.13",
+  "type": "실무형",
+  "no": 15,
+  "q": "Smurf 라우터 설정",
+  "a": "access-list 100 permit udp …, interface, ip directed-broadcast 100",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "20-실16",
+  "round": 20,
+  "meta": "2022.08.13",
+  "type": "실무형",
+  "no": 16,
+  "q": "위험 대응 기법",
+  "a": "수용 의미, 보호대책 효과 = 감소 ALE − 운영비, 회피=축소·포기, 전가=보험·외주",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "19-단1",
+  "round": 19,
+  "meta": "2022.04.23",
+  "type": "단답형",
+  "no": 1,
+  "q": "위험 3요소",
+  "a": "자산, 위협, 취약점",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "19-단2",
+  "round": 19,
+  "meta": "2022.04.23",
+  "type": "단답형",
+  "no": 2,
+  "q": "단말 인증·통제 솔루션",
+  "a": "NAC",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "19-단3",
+  "round": 19,
+  "meta": "2022.04.23",
+  "type": "단답형",
+  "no": 3,
+  "q": "공유자원 접근 순서 악용",
+  "a": "Race Condition",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "19-단4",
+  "round": 19,
+  "meta": "2022.04.23",
+  "type": "단답형",
+  "no": 4,
+  "q": "Victim MAC 위조",
+  "a": "ARP 스푸핑",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "19-단5",
+  "round": 19,
+  "meta": "2022.04.23",
+  "type": "단답형",
+  "no": 5,
+  "q": "IDS 유형",
+  "a": "네트워크, 호스트",
+  "tags": [
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "19-단6",
+  "round": 19,
+  "meta": "2022.04.23",
+  "type": "단답형",
+  "no": 6,
+  "q": "RTO/RPO 결정 절차",
+  "a": "BIA",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "19-단7",
+  "round": 19,
+  "meta": "2022.04.23",
+  "type": "단답형",
+  "no": 7,
+  "q": "아파치 로그",
+  "a": "access, error, httpd.conf",
+  "tags": [
+   "웹보안",
+   "시스템"
+  ]
+ },
+ {
+  "id": "19-단8",
+  "round": 19,
+  "meta": "2022.04.23",
+  "type": "단답형",
+  "no": 8,
+  "q": "필 짐머만 메일 보안",
+  "a": "PGP",
+  "tags": [
+   "메일보안"
+  ]
+ },
+ {
+  "id": "19-단9",
+  "round": 19,
+  "meta": "2022.04.23",
+  "type": "단답형",
+  "no": 9,
+  "q": "CIA 기준 자산 평가",
+  "a": "중요도",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "19-단10",
+  "round": 19,
+  "meta": "2022.04.23",
+  "type": "단답형",
+  "no": 10,
+  "q": "연결된 세션 가로채기",
+  "a": "세션 하이재킹",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "19-서11",
+  "round": 19,
+  "meta": "2022.04.23",
+  "type": "서술형",
+  "no": 11,
+  "q": "특수비트 해석",
+  "a": "setuid / setgid / sticky bit",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "19-서12",
+  "round": 19,
+  "meta": "2022.04.23",
+  "type": "서술형",
+  "no": 12,
+  "q": "개인정보처리방침",
+  "a": "기재사항 4개+, 공개 방법 3개+(홈페이지·사업장 게시·관보/신문·간행물·계약서)",
+  "tags": [
+   "개인정보·법규"
+  ]
+ },
+ {
+  "id": "19-서13",
+  "round": 19,
+  "meta": "2022.04.23",
+  "type": "서술형",
+  "no": 13,
+  "q": "Promiscuous 모드",
+  "a": "의미·스니핑·대응",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "19-실14",
+  "round": 19,
+  "meta": "2022.04.23",
+  "type": "실무형",
+  "no": 14,
+  "q": "구성도·자산목록 진단",
+  "a": "자산 누락(개발서버), EOS OS 사용",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "19-실15",
+  "round": 19,
+  "meta": "2022.04.23",
+  "type": "실무형",
+  "no": 15,
+  "q": ".htaccess",
+  "a": "FilesMatch 직접 호출 금지, AddType text/html",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "19-실16",
+  "round": 19,
+  "meta": "2022.04.23",
+  "type": "실무형",
+  "no": 16,
+  "q": "위험평가서",
+  "a": "중요도 평가 목적, 우려사항(위협+취약성), 가능성, 복합 접근법 적용",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "18-단1",
+  "round": 18,
+  "meta": "2021",
+  "type": "단답형",
+  "no": 1,
+  "q": "무선랜 표준",
+  "a": "WPA2",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "18-단2",
+  "round": 18,
+  "meta": "2021",
+  "type": "단답형",
+  "no": 2,
+  "q": "VirusTotal 악성코드 분류 툴",
+  "a": "YARA",
+  "tags": [
+   "시스템",
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "18-단3",
+  "round": 18,
+  "meta": "2021",
+  "type": "단답형",
+  "no": 3,
+  "q": "SW 취약점",
+  "a": "SQL Injection, XSS, OS 명령어 삽입",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "18-단4",
+  "round": 18,
+  "meta": "2021",
+  "type": "단답형",
+  "no": 4,
+  "q": "MS 오피스 데이터 전달 프로토콜",
+  "a": "DDE",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "18-단5",
+  "round": 18,
+  "meta": "2021",
+  "type": "단답형",
+  "no": 5,
+  "q": "위험 3요소",
+  "a": "자산, 위협, 취약점",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "18-단6",
+  "round": 18,
+  "meta": "2021",
+  "type": "단답형",
+  "no": 6,
+  "q": "기업 거버넌스 하위",
+  "a": "정보보안 거버넌스",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "18-단7",
+  "round": 18,
+  "meta": "2021",
+  "type": "단답형",
+  "no": 7,
+  "q": "C&C 도메인 지속 변경",
+  "a": "DGA",
+  "tags": [
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "18-단8",
+  "round": 18,
+  "meta": "2021",
+  "type": "단답형",
+  "no": 8,
+  "q": "위험분석 절차",
+  "a": "자산 식별, 자산 가치·의존도 평가",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "18-단9",
+  "round": 18,
+  "meta": "2021",
+  "type": "단답형",
+  "no": 9,
+  "q": "CRLF 헤더 조작 DoS",
+  "a": "Slowloris (Slow HTTP Header)",
+  "tags": [
+   "웹보안",
+   "네트워크"
+  ]
+ },
+ {
+  "id": "18-단10",
+  "round": 18,
+  "meta": "2021",
+  "type": "단답형",
+  "no": 10,
+  "q": "앱 특정 화면 이동",
+  "a": "모바일 딥링크",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "18-서11",
+  "round": 18,
+  "meta": "2021",
+  "type": "서술형",
+  "no": 11,
+  "q": "Prepared Statement",
+  "a": "개념, 입력값이 매개변수로 처리되어 SQLi 방지",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "18-서12",
+  "round": 18,
+  "meta": "2021",
+  "type": "서술형",
+  "no": 12,
+  "q": "DRDoS",
+  "a": "원리, 기존 DoS와 차이, Unicast RPF",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "18-서13",
+  "round": 18,
+  "meta": "2021",
+  "type": "서술형",
+  "no": 13,
+  "q": "패킷 필터링 방화벽",
+  "a": "Ingress 필터링, Tiny Fragment 이유·대응, Stateful 차이",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "18-실14",
+  "round": 18,
+  "meta": "2021",
+  "type": "실무형",
+  "no": 14,
+  "q": "이메일 로그",
+  "a": "RSA 용도(인증서 검증), SPF·DKIM",
+  "tags": [
+   "시스템",
+   "메일보안"
+  ]
+ },
+ {
+  "id": "18-실15",
+  "round": 18,
+  "meta": "2021",
+  "type": "실무형",
+  "no": 15,
+  "q": "리눅스 보안 설정",
+  "a": "계정 임계값(pam), iptables DROP, chown root·chmod 400 /etc/shadow, LimitRequestBody 의미",
+  "tags": [
+   "웹보안",
+   "네트워크",
+   "시스템"
+  ]
+ },
+ {
+  "id": "18-실16",
+  "round": 18,
+  "meta": "2021",
+  "type": "실무형",
+  "no": 16,
+  "q": "DNS 기반 공격 로그",
+  "a": "DNS 증폭 DRDoS (ANY 쿼리)",
+  "tags": [
+   "네트워크",
+   "시스템"
+  ]
+ },
+ {
+  "id": "17-단1",
+  "round": 17,
+  "meta": "2021.05.29, 법규 31%로 급등",
+  "type": "단답형",
+  "no": 1,
+  "q": "NTLM 해시 재사용",
+  "a": "Pass the Hash",
+  "tags": [
+   "시스템",
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "17-단2",
+  "round": 17,
+  "meta": "2021.05.29, 법규 31%로 급등",
+  "type": "단답형",
+  "no": 2,
+  "q": "DNS 캐시 조작",
+  "a": "DNS 캐시 포이즈닝",
+  "tags": [
+   "네트워크",
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "17-단3",
+  "round": 17,
+  "meta": "2021.05.29, 법규 31%로 급등",
+  "type": "단답형",
+  "no": 3,
+  "q": "킬체인 확장 14단계",
+  "a": "MITRE ATT&CK",
+  "tags": [
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "17-단4",
+  "round": 17,
+  "meta": "2021.05.29, 법규 31%로 급등",
+  "type": "단답형",
+  "no": 4,
+  "q": "유출 계정 대입",
+  "a": "크리덴셜 스터핑",
+  "tags": [
+   "시스템",
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "17-단5",
+  "round": 17,
+  "meta": "2021.05.29, 법규 31%로 급등",
+  "type": "단답형",
+  "no": 5,
+  "q": "취약점 점수화",
+  "a": "CVSS",
+  "tags": [
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "17-단6",
+  "round": 17,
+  "meta": "2021.05.29, 법규 31%로 급등",
+  "type": "단답형",
+  "no": 6,
+  "q": "침해사고 대응 3단계",
+  "a": "초기 대응",
+  "tags": [
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "17-단7",
+  "round": 17,
+  "meta": "2021.05.29, 법규 31%로 급등",
+  "type": "단답형",
+  "no": 7,
+  "q": "법령 용어",
+  "a": "내부관리계획, 전자적 침해행위, 정보보호 사전점검",
+  "tags": [
+   "개인정보·법규"
+  ]
+ },
+ {
+  "id": "17-단8",
+  "round": 17,
+  "meta": "2021.05.29, 법규 31%로 급등",
+  "type": "단답형",
+  "no": 8,
+  "q": "법령 용어",
+  "a": "정보통신망, 정보보호시스템, 정보통신기반시설",
+  "tags": [
+   "개인정보·법규"
+  ]
+ },
+ {
+  "id": "17-단9",
+  "round": 17,
+  "meta": "2021.05.29, 법규 31%로 급등",
+  "type": "단답형",
+  "no": 9,
+  "q": "ISO 27005 위험평가",
+  "a": "위험식별, 위험분석, 위험평가",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "17-단10",
+  "round": 17,
+  "meta": "2021.05.29, 법규 31%로 급등",
+  "type": "단답형",
+  "no": 10,
+  "q": "안전성 확보조치 접속기록 정의",
+  "a": "(접속기록 정의 조항)",
+  "tags": [
+   "개인정보·법규"
+  ]
+ },
+ {
+  "id": "17-서11",
+  "round": 17,
+  "meta": "2021.05.29, 법규 31%로 급등",
+  "type": "서술형",
+  "no": 11,
+  "q": "가명정보",
+  "a": "정의, 3단계(적정성 검토·추가 가명처리), 동의 없이 가능(통계·과학적 연구·공익적 기록보존), 익명정보",
+  "tags": [
+   "개인정보·법규"
+  ]
+ },
+ {
+  "id": "17-서12",
+  "round": 17,
+  "meta": "2021.05.29, 법규 31%로 급등",
+  "type": "서술형",
+  "no": 12,
+  "q": "NAC 구성 2가지",
+  "a": "인라인 / 아웃오브밴드",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "17-서13",
+  "round": 17,
+  "meta": "2021.05.29, 법규 31%로 급등",
+  "type": "서술형",
+  "no": 13,
+  "q": "CISO 역할 4가지+",
+  "a": "관리체계 수립, 취약점 분석·개선, 침해사고 예방·대응, 사전 보안대책 등",
+  "tags": [
+   "개인정보·법규",
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "17-실14",
+  "round": 17,
+  "meta": "2021.05.29, 법규 31%로 급등",
+  "type": "실무형",
+  "no": 14,
+  "q": "웹로그 원격명령실행",
+  "a": "IIS 유니코드 취약점 / 패치, 별도 드라이브 설치, 입력값 필터링",
+  "tags": [
+   "웹보안",
+   "시스템"
+  ]
+ },
+ {
+  "id": "17-실15",
+  "round": 17,
+  "meta": "2021.05.29, 법규 31%로 급등",
+  "type": "실무형",
+  "no": 15,
+  "q": "Snort 룰 해석",
+  "a": "msg, content, !content, depth",
+  "tags": [
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "17-실16",
+  "round": 17,
+  "meta": "2021.05.29, 법규 31%로 급등",
+  "type": "실무형",
+  "no": 16,
+  "q": "Apache 설정 문제점",
+  "a": "디렉터리 인덱싱, FollowSymLinks, 상위 디렉터리 접근 → 옵션 제거",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "16-단1",
+  "round": 16,
+  "meta": "2020.12.12, 당시 최난도",
+  "type": "단답형",
+  "no": 1,
+  "q": "shadow 첫 항목",
+  "a": "해시 알고리즘 ID",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "16-단2",
+  "round": 16,
+  "meta": "2020.12.12, 당시 최난도",
+  "type": "단답형",
+  "no": 2,
+  "q": "관리체계·취약점·침해대응 총괄",
+  "a": "CISO",
+  "tags": [
+   "개인정보·법규"
+  ]
+ },
+ {
+  "id": "16-단3",
+  "round": 16,
+  "meta": "2020.12.12, 당시 최난도",
+  "type": "단답형",
+  "no": 3,
+  "q": "최상위 정보보호 문서",
+  "a": "정보보호정책",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "16-단4",
+  "round": 16,
+  "meta": "2020.12.12, 당시 최난도",
+  "type": "단답형",
+  "no": 4,
+  "q": "WEP/WPA/WPA2 암호화",
+  "a": "RC4, TKIP, AES(CCMP)",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "16-단5",
+  "round": 16,
+  "meta": "2020.12.12, 당시 최난도",
+  "type": "단답형",
+  "no": 5,
+  "q": "엔드포인트 행위 탐지",
+  "a": "EDR",
+  "tags": [
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "16-단6",
+  "round": 16,
+  "meta": "2020.12.12, 당시 최난도",
+  "type": "단답형",
+  "no": 6,
+  "q": "TLS 1.3 핸드셰이크 간소화",
+  "a": "1-RTT, 0-RTT",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "16-단7",
+  "round": 16,
+  "meta": "2020.12.12, 당시 최난도",
+  "type": "단답형",
+  "no": 7,
+  "q": "시스템 콜 추적",
+  "a": "strace",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "16-단8",
+  "round": 16,
+  "meta": "2020.12.12, 당시 최난도",
+  "type": "단답형",
+  "no": 8,
+  "q": "위협정보 수집·분석",
+  "a": "TMS",
+  "tags": [
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "16-단9",
+  "round": 16,
+  "meta": "2020.12.12, 당시 최난도",
+  "type": "단답형",
+  "no": 9,
+  "q": "위험 관계도",
+  "a": "위협, 자산, 감소",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "16-단10",
+  "round": 16,
+  "meta": "2020.12.12, 당시 최난도",
+  "type": "단답형",
+  "no": 10,
+  "q": "UDP용 TLS",
+  "a": "DTLS",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "16-서11",
+  "round": 16,
+  "meta": "2020.12.12, 당시 최난도",
+  "type": "서술형",
+  "no": 11,
+  "q": "쿠키 Secure/HttpOnly",
+  "a": "기능·대응 공격",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "16-서12",
+  "round": 16,
+  "meta": "2020.12.12, 당시 최난도",
+  "type": "서술형",
+  "no": 12,
+  "q": "디지털 포렌식 원칙",
+  "a": "정당성, 재현성, 신속성, 연계보관성, 무결성",
+  "tags": [
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "16-서13",
+  "round": 16,
+  "meta": "2020.12.12, 당시 최난도",
+  "type": "서술형",
+  "no": 13,
+  "q": "SPF/DKIM/DMARC",
+  "a": "검증 항목·방법, 서명 주체, 키 공유, 혼합 기법",
+  "tags": [
+   "메일보안"
+  ]
+ },
+ {
+  "id": "16-실14",
+  "round": 16,
+  "meta": "2020.12.12, 당시 최난도",
+  "type": "실무형",
+  "no": 14,
+  "q": "XML 코드",
+  "a": "XXE, Billion Laughs(DoS)",
+  "tags": [
+   "웹보안",
+   "네트워크"
+  ]
+ },
+ {
+  "id": "16-실15",
+  "round": 16,
+  "meta": "2020.12.12, 당시 최난도",
+  "type": "실무형",
+  "no": 15,
+  "q": "정량 위험평가 계산",
+  "a": "SLE·ALE·보호대책 효과 → 효과 큰 B 선택",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "16-실16",
+  "round": 16,
+  "meta": "2020.12.12, 당시 최난도",
+  "type": "실무형",
+  "no": 16,
+  "q": "개인정보 흐름표 문제",
+  "a": "주민번호 근거 없음, MD5, 평문 전송, 영구 보관",
+  "tags": [
+   "개인정보·법규"
+  ]
+ },
+ {
+  "id": "15-단1",
+  "round": 15,
+  "meta": "2020, 합격률 8.7%",
+  "type": "단답형",
+  "no": 1,
+  "q": "XSS 점검 스크립트",
+  "a": "XSS, alert",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "15-단2",
+  "round": 15,
+  "meta": "2020, 합격률 8.7%",
+  "type": "단답형",
+  "no": 2,
+  "q": "크롤링 제한",
+  "a": "robots.txt",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "15-단3",
+  "round": 15,
+  "meta": "2020, 합격률 8.7%",
+  "type": "단답형",
+  "no": 3,
+  "q": "DoS 기법",
+  "a": "Land, Smurf, SYN Flooding",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "15-단4",
+  "round": 15,
+  "meta": "2020, 합격률 8.7%",
+  "type": "단답형",
+  "no": 4,
+  "q": "1900 포트 IoT 반사 공격",
+  "a": "SSDP DRDoS",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "15-단5",
+  "round": 15,
+  "meta": "2020, 합격률 8.7%",
+  "type": "단답형",
+  "no": 5,
+  "q": "대용량 오픈소스 IDS",
+  "a": "Suricata, Snort",
+  "tags": [
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "15-단6",
+  "round": 15,
+  "meta": "2020, 합격률 8.7%",
+  "type": "단답형",
+  "no": 6,
+  "q": "접속기록 2년·다운로드 사유",
+  "a": "고유식별정보, 민감정보, 내부관리계획",
+  "tags": [
+   "개인정보·법규"
+  ]
+ },
+ {
+  "id": "15-단7",
+  "round": 15,
+  "meta": "2020, 합격률 8.7%",
+  "type": "단답형",
+  "no": 7,
+  "q": "SSL 3.0 다운그레이드",
+  "a": "POODLE",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "15-단8",
+  "round": 15,
+  "meta": "2020, 합격률 8.7%",
+  "type": "단답형",
+  "no": 8,
+  "q": "ISMS-P 인증체계",
+  "a": "방송통신위원회, KISA, 인증위원회",
+  "tags": [
+   "개인정보·법규"
+  ]
+ },
+ {
+  "id": "15-단9",
+  "round": 15,
+  "meta": "2020, 합격률 8.7%",
+  "type": "단답형",
+  "no": 9,
+  "q": "위험 평가·완화 과정",
+  "a": "위험관리",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "15-단10",
+  "round": 15,
+  "meta": "2020, 합격률 8.7%",
+  "type": "단답형",
+  "no": 10,
+  "q": "VPN 프로토콜",
+  "a": "L2F, PPTP, IPSec",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "15-서11",
+  "round": 15,
+  "meta": "2020, 합격률 8.7%",
+  "type": "서술형",
+  "no": 11,
+  "q": "ESP 터널모드",
+  "a": "필드 도식, 암호화 범위, 인증 범위",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "15-서12",
+  "round": 15,
+  "meta": "2020, 합격률 8.7%",
+  "type": "서술형",
+  "no": 12,
+  "q": "삭제된 백도어",
+  "a": "실행 후 파일 삭제 / cp /proc/PID/exe / history, /proc/PID/cmdline",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "15-서13",
+  "round": 15,
+  "meta": "2020, 합격률 8.7%",
+  "type": "서술형",
+  "no": 13,
+  "q": "비밀번호 작성규칙 3가지",
+  "a": "21회와 동일",
+  "tags": [
+   "개인정보·법규"
+  ]
+ },
+ {
+  "id": "15-실14",
+  "round": 15,
+  "meta": "2020, 합격률 8.7%",
+  "type": "실무형",
+  "no": 14,
+  "q": "백업 파일 권한",
+  "a": "타 계정 읽기 가능 / umask 변경·복원 / chown operator + chmod 700",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "15-실15",
+  "round": 15,
+  "meta": "2020, 합격률 8.7%",
+  "type": "실무형",
+  "no": 15,
+  "q": "Content-Length 큰 POST, 1바이트 전송",
+  "a": "Slow HTTP POST(RUDY) / 연결·읽기 타임아웃, 동시 연결 제한",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "15-실16",
+  "round": 15,
+  "meta": "2020, 합격률 8.7%",
+  "type": "실무형",
+  "no": 16,
+  "q": "교통카드 신청서 위반",
+  "a": "주민번호 수집·제공, 영구보관, 거부권 미고지, 제공기관 불명확",
+  "tags": [
+   "개인정보·법규"
+  ]
+ },
+ {
+  "id": "14-단1",
+  "round": 14,
+  "meta": "2019, 합격률 10%",
+  "type": "단답형",
+  "no": 1,
+  "q": "접근통제",
+  "a": "MAC, DAC, RBAC",
+  "tags": [
+   "보안일반"
+  ]
+ },
+ {
+  "id": "14-단2",
+  "round": 14,
+  "meta": "2019, 합격률 10%",
+  "type": "단답형",
+  "no": 2,
+  "q": "ARP 목적지",
+  "a": "ff:ff:ff:ff:ff:ff",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "14-단3",
+  "round": 14,
+  "meta": "2019, 합격률 10%",
+  "type": "단답형",
+  "no": 3,
+  "q": "IPSec",
+  "a": "네트워크 계층, AH, ESP",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "14-단4",
+  "round": 14,
+  "meta": "2019, 합격률 10%",
+  "type": "단답형",
+  "no": 4,
+  "q": "MS 오피스 프로토콜",
+  "a": "DDE",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "14-단5",
+  "round": 14,
+  "meta": "2019, 합격률 10%",
+  "type": "단답형",
+  "no": 5,
+  "q": "사이버위기 경보",
+  "a": "관심, 경계, 심각",
+  "tags": [
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "14-단6",
+  "round": 14,
+  "meta": "2019, 합격률 10%",
+  "type": "단답형",
+  "no": 6,
+  "q": "리눅스 로그",
+  "a": "utmp, wtmp, btmp",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "14-단7",
+  "round": 14,
+  "meta": "2019, 합격률 10%",
+  "type": "단답형",
+  "no": 7,
+  "q": "정보보호제품 국제 인증",
+  "a": "CC 인증",
+  "tags": [
+   "보안일반"
+  ]
+ },
+ {
+  "id": "14-단8",
+  "round": 14,
+  "meta": "2019, 합격률 10%",
+  "type": "단답형",
+  "no": 8,
+  "q": "업로드 크기 제한",
+  "a": "LimitRequestBody",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "14-단9",
+  "round": 14,
+  "meta": "2019, 합격률 10%",
+  "type": "단답형",
+  "no": 9,
+  "q": "법률 명칭",
+  "a": "정보통신망법, 정보통신기반보호법, 위치정보법",
+  "tags": [
+   "개인정보·법규"
+  ]
+ },
+ {
+  "id": "14-단10",
+  "round": 14,
+  "meta": "2019, 합격률 10%",
+  "type": "단답형",
+  "no": 10,
+  "q": "ISMS-P 1.2.1·1.2.3",
+  "a": "중요도, 위협정보, 경영진",
+  "tags": [
+   "위험관리",
+   "개인정보·법규"
+  ]
+ },
+ {
+  "id": "14-서11",
+  "round": 14,
+  "meta": "2019, 합격률 10%",
+  "type": "서술형",
+  "no": 11,
+  "q": "계정 임계값 옵션",
+  "a": "deny, unlock_time, no_magic_root, reset",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "14-서12",
+  "round": 14,
+  "meta": "2019, 합격률 10%",
+  "type": "서술형",
+  "no": 12,
+  "q": "/etc/shadow",
+  "a": "알고리즘·salt·해시, salt로 레인보우 테이블 대응, pwunconv",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "14-서13",
+  "round": 14,
+  "meta": "2019, 합격률 10%",
+  "type": "서술형",
+  "no": 13,
+  "q": "강제적 접근통제",
+  "a": "BLP, no read up, no write down, Biba no write up",
+  "tags": [
+   "보안일반"
+  ]
+ },
+ {
+  "id": "14-실14",
+  "round": 14,
+  "meta": "2019, 합격률 10%",
+  "type": "실무형",
+  "no": 14,
+  "q": "ACK 스캔",
+  "a": "방화벽 필터링 여부 판별, RST 온 포트는 미필터링",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "14-실15",
+  "round": 14,
+  "meta": "2019, 합격률 10%",
+  "type": "실무형",
+  "no": 15,
+  "q": "아파치 옵션",
+  "a": "Timeout, MaxKeepAliveRequests, DirectoryIndex, ErrorLog",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "14-실16",
+  "round": 14,
+  "meta": "2019, 합격률 10%",
+  "type": "실무형",
+  "no": 16,
+  "q": "XSS Snort 룰",
+  "a": "offset·depth, distance, offset 0 + nocase로 수정",
+  "tags": [
+   "웹보안",
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "13-단1",
+  "round": 13,
+  "meta": "2019.05.25",
+  "type": "단답형",
+  "no": 1,
+  "q": "Victim MAC 위조",
+  "a": "ARP 스푸핑",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "13-단2",
+  "round": 13,
+  "meta": "2019.05.25",
+  "type": "단답형",
+  "no": 2,
+  "q": "분야별 실시간 경보·분석 기관",
+  "a": "ISAC",
+  "tags": [
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "13-단3",
+  "round": 13,
+  "meta": "2019.05.25",
+  "type": "단답형",
+  "no": 3,
+  "q": "침입탐지 정책",
+  "a": "오용탐지, 이상탐지, 오탐/미탐",
+  "tags": [
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "13-단4",
+  "round": 13,
+  "meta": "2019.05.25",
+  "type": "단답형",
+  "no": 4,
+  "q": "GitHub DDoS 캐시",
+  "a": "Memcached",
+  "tags": [
+   "네트워크",
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "13-단5",
+  "round": 13,
+  "meta": "2019.05.25",
+  "type": "단답형",
+  "no": 5,
+  "q": "패스워드 정책 파일",
+  "a": "login.defs",
+  "tags": [
+   "시스템"
+  ]
+ },
+ {
+  "id": "13-단6",
+  "round": 13,
+  "meta": "2019.05.25",
+  "type": "단답형",
+  "no": 6,
+  "q": "소스 미확인/확인",
+  "a": "블랙박스, 화이트박스",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "13-단7",
+  "round": 13,
+  "meta": "2019.05.25",
+  "type": "단답형",
+  "no": 7,
+  "q": "정성적 위험분석",
+  "a": "시나리오법, 델파이법",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "13-단8",
+  "round": 13,
+  "meta": "2019.05.25",
+  "type": "단답형",
+  "no": 8,
+  "q": "보험 가입",
+  "a": "위험 전가",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "13-단9",
+  "round": 13,
+  "meta": "2019.05.25",
+  "type": "단답형",
+  "no": 9,
+  "q": "기본 보호 수준 설정",
+  "a": "기준(베이스라인) 접근법",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "13-단10",
+  "round": 13,
+  "meta": "2019.05.25",
+  "type": "단답형",
+  "no": 10,
+  "q": "비즈니스 연속성 계획",
+  "a": "BCP",
+  "tags": [
+   "위험관리"
+  ]
+ },
+ {
+  "id": "13-서11",
+  "round": 13,
+  "meta": "2019.05.25",
+  "type": "서술형",
+  "no": 11,
+  "q": ".htaccess",
+  "a": "FilesMatch, AddType",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "13-서12",
+  "round": 13,
+  "meta": "2019.05.25",
+  "type": "서술형",
+  "no": 12,
+  "q": "IDS 미러 / IPS 인라인 이유",
+  "a": "IPS 실시간 차단·경계 배치, IDS 업무 영향 없음",
+  "tags": [
+   "위험관리",
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "13-서13",
+  "round": 13,
+  "meta": "2019.05.25",
+  "type": "서술형",
+  "no": 13,
+  "q": "IPSec 모드별 범위",
+  "a": "AH/ESP × 전송/터널 인증·암호화 구간, IKE",
+  "tags": [
+   "네트워크"
+  ]
+ },
+ {
+  "id": "13-실14",
+  "round": 13,
+  "meta": "2019.05.25",
+  "type": "실무형",
+  "no": 14,
+  "q": "하트블리드 Snort 룰",
+  "a": "포트, content 바이트 검사 의미",
+  "tags": [
+   "웹보안",
+   "관제·IDS"
+  ]
+ },
+ {
+  "id": "13-실15",
+  "round": 13,
+  "meta": "2019.05.25",
+  "type": "실무형",
+  "no": 15,
+  "q": "디렉터리 인덱싱",
+  "a": "200 OK + index of, Indexes 삭제",
+  "tags": [
+   "웹보안"
+  ]
+ },
+ {
+  "id": "13-실16",
+  "round": 13,
+  "meta": "2019.05.25",
+  "type": "실무형",
+  "no": 16,
+  "q": "robots.txt",
+  "a": "크롤러 접근 제어 용도·설정 의미",
+  "tags": [
+   "웹보안"
+  ]
+ }
+];
+</script>
+<script>
+(function(){
+  const Q = window.QUESTIONS || [];
+  const $ = s => document.querySelector(s);
+  const store = {
+    get(k, d){ try{ const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; }catch(e){ return d; } },
+    set(k, v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} }
+  };
+  let marks = store.get('qb.marks', {});           // id -> 'known' | 'unknown'
+  const state = {
+    tab: 'bank', round: 'all', search: '', types: new Set(), tags: new Set(), status: 'all',
+    showAll: false, open: new Set(),
+    quiz: { list: [], idx: 0, shown: false, onlyWrong: false }
+  };
+
+  // ---------- theme ----------
+  const savedTheme = store.get('qb.theme', null);
+  if (savedTheme) document.documentElement.setAttribute('data-theme', savedTheme);
+  $('#themeBtn').onclick = () => {
+    const cur = document.documentElement.getAttribute('data-theme')
+      || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const next = cur === 'dark' ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-theme', next); store.set('qb.theme', next);
+  };
+
+  // ---------- filters UI ----------
+  $('#total').textContent = Q.length;
+  const rounds = [...new Set(Q.map(q => q.round))].sort((a,b) => b-a);
+  const sel = $('#fRound');
+  sel.innerHTML = '<option value="all">전체 회차</option><option value="recent">최근 3년 (24~29회)</option>'
+    + rounds.map(r => { const m = (Q.find(q => q.round===r).meta||'').split(',')[0]; return `<option value="${r}">${r}회${m ? ' · '+m : ''}</option>`; }).join('');
+  sel.onchange = () => { state.round = sel.value; refresh(true); };
+  $('#fSearch').oninput = e => { state.search = e.target.value.trim().toLowerCase(); refresh(true); };
+
+  function chips(container, values, set){
+    values.forEach(v => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'chip'; b.textContent = v; b.setAttribute('aria-pressed','false');
+      b.onclick = () => { set.has(v) ? set.delete(v) : set.add(v); b.setAttribute('aria-pressed', set.has(v)); refresh(true); };
+      container.appendChild(b);
+    });
+  }
+  chips($('#fType'), ['단답형','서술형','실무형'], state.types);
+  const tagOrder = ['위험관리','웹보안','네트워크','시스템','개인정보·법규','관제·IDS','메일보안','보안일반'];
+  const tagsPresent = tagOrder.filter(t => Q.some(q => q.tags.includes(t)));
+  chips($('#fTag'), tagsPresent, state.tags);
+
+  const statusOpts = [['all','전체'],['none','안 푼 문제'],['known','알았음'],['unknown','몰랐음']];
+  const fs = $('#fStatus'); fs.className = 'row'; fs.style.gap = '6px';
+  statusOpts.forEach(([v, label]) => {
+    const b = document.createElement('button'); b.type='button'; b.className='chip'; b.textContent=label;
+    b.setAttribute('aria-pressed', v==='all'); b.dataset.v = v;
+    b.onclick = () => { state.status = v; fs.querySelectorAll('.chip').forEach(c => c.setAttribute('aria-pressed', c.dataset.v===v)); refresh(true); };
+    fs.appendChild(b);
+  });
+
+  function filtered(){
+    return Q.filter(q => {
+      if (state.round === 'recent' && q.round < 24) return false;
+      if (state.round !== 'all' && state.round !== 'recent' && q.round !== +state.round) return false;
+      if (state.types.size && !state.types.has(q.type)) return false;
+      if (state.tags.size && !q.tags.some(t => state.tags.has(t))) return false;
+      const m = marks[q.id];
+      if (state.status === 'none' && m) return false;
+      if ((state.status === 'known' || state.status === 'unknown') && m !== state.status) return false;
+      if (state.search && !(q.q + ' ' + q.a + ' ' + q.tags.join(' ')).toLowerCase().includes(state.search)) return false;
+      return true;
+    });
+  }
+
+  // ---------- rendering helpers ----------
+  const esc = s => s.replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  function answerHTML(a){
+    const parts = a.split(/\s\/\s/).map(s => s.trim()).filter(Boolean);
+    return parts.length > 1 ? '<ul>' + parts.map(p => `<li>${esc(p)}</li>`).join('') + '</ul>' : esc(a);
+  }
+  function markLabel(id){
+    const m = marks[id];
+    return m === 'known' ? '✓ 알았음' : m === 'unknown' ? '✗ 몰랐음' : '';
+  }
+  function setMark(id, v){
+    if (marks[id] === v) delete marks[id]; else marks[id] = v;
+    store.set('qb.marks', marks); updateCounts();
+  }
+  function cardHTML(q, open){
+    const m = marks[q.id] || '';
+    return `<article class="card ${m}" data-id="${q.id}">
+      <div class="meta"><span class="badge">${q.round}회 ${q.type} ${q.no}번</span>
+        ${q.tags.map(t => `<span class="tag">#${t}</span>`).join(' ')}</div>
+      <div class="q">${esc(q.q)}</div>
+      <div class="actions">
+        <button class="btn primary" data-act="toggle" type="button" aria-expanded="${open}">${open ? '정답 감추기' : '정답 보기'}</button>
+        <button class="btn ok" data-act="known" type="button">알았음</button>
+        <button class="btn bad" data-act="unknown" type="button">몰랐음</button>
+        <span class="mark-state">${markLabel(q.id)}</span>
+      </div>
+      <div class="answer" ${open ? '' : 'hidden'}>${answerHTML(q.a)}</div>
+    </article>`;
+  }
+  function bindList(el, rerender){
+    el.onclick = e => {
+      const btn = e.target.closest('button[data-act]'); if (!btn) return;
+      const card = btn.closest('.card'); const id = card.dataset.id; const act = btn.dataset.act;
+      if (act === 'toggle'){
+        const ans = card.querySelector('.answer'); const show = ans.hidden;
+        ans.hidden = !show; btn.textContent = show ? '정답 감추기' : '정답 보기'; btn.setAttribute('aria-expanded', show);
+        show ? state.open.add(id) : state.open.delete(id);
+      } else {
+        setMark(id, act);
+        card.classList.remove('known','unknown'); if (marks[id]) card.classList.add(marks[id]);
+        card.querySelector('.mark-state').textContent = markLabel(id);
+        if (rerender) rerender();
+      }
+    };
+  }
+
+  // ---------- bank ----------
+  const PAGE = 60; let bankLimit = PAGE;
+  function renderBank(){
+    const list = filtered();
+    $('#bankInfo').textContent = `${list.length}문항`;
+    const shown = list.slice(0, bankLimit);
+    $('#bankList').innerHTML = shown.length
+      ? shown.map(q => cardHTML(q, state.showAll || state.open.has(q.id))).join('')
+        + (list.length > bankLimit ? `<button class="btn" id="more" type="button" style="justify-self:center">더 보기 (${list.length - bankLimit}개 남음)</button>` : '')
+      : '<div class="empty">조건에 맞는 문제가 없어요.</div>';
+    const more = $('#more'); if (more) more.onclick = () => { bankLimit += PAGE; renderBank(); };
+    $('#toggleAll').textContent = state.showAll ? '전체 정답 감추기' : '전체 정답 보기';
+  }
+  bindList($('#bankList'));
+  $('#toggleAll').onclick = () => { state.showAll = !state.showAll; if (!state.showAll) state.open.clear(); renderBank(); };
+
+  // ---------- quiz ----------
+  function buildQuiz(shuffle){
+    let list = state.quiz.onlyWrong ? Q.filter(q => marks[q.id] === 'unknown') : filtered();
+    list = list.slice();
+    if (shuffle) for (let i = list.length - 1; i > 0; i--){ const j = Math.floor(Math.random()*(i+1)); [list[i], list[j]] = [list[j], list[i]]; }
+    state.quiz.list = list; state.quiz.idx = 0; state.quiz.shown = false;
+  }
+  function renderQuiz(){
+    const { list, idx, shown } = state.quiz;
+    $('#quizInfo').textContent = (state.quiz.onlyWrong ? '오답노트 · ' : '') + (list.length ? `${idx+1} / ${list.length}` : '0문항');
+    $('#progressBar').style.width = list.length ? ((idx+1)/list.length*100) + '%' : '0';
+    if (!list.length){ $('#quizBox').innerHTML = '<div class="card empty">풀 문제가 없어요. 필터를 바꿔 보세요.</div>'; return; }
+    const q = list[idx]; const m = marks[q.id] || '';
+    $('#quizBox').innerHTML = `<article class="card quiz-card ${m}">
+      <div class="meta"><span class="badge">${q.round}회 ${q.type} ${q.no}번</span>
+        ${q.tags.map(t => `<span class="tag">#${t}</span>`).join(' ')}
+        <span class="mark-state">${markLabel(q.id)}</span></div>
+      <div class="q">${esc(q.q)}</div>
+      <div class="actions"><button class="btn primary" id="qToggle" type="button" aria-expanded="${shown}">${shown ? '정답 감추기' : '정답 보기'}</button></div>
+      <div class="answer" ${shown ? '' : 'hidden'}>${answerHTML(q.a)}</div>
+      <div class="quiz-nav">
+        <div class="grp"><button class="btn" id="qPrev" type="button" ${idx===0?'disabled':''}>← 이전</button>
+          <button class="btn" id="qNext" type="button" ${idx===list.length-1?'disabled':''}>다음 →</button></div>
+        <div class="grp"><button class="btn ok" id="qKnown" type="button">알았음 (1)</button>
+          <button class="btn bad" id="qUnknown" type="button">몰랐음 (2)</button></div>
+      </div></article>`;
+    $('#qToggle').onclick = toggleQuiz; $('#qPrev').onclick = () => go(-1); $('#qNext').onclick = () => go(1);
+    $('#qKnown').onclick = () => markQuiz('known'); $('#qUnknown').onclick = () => markQuiz('unknown');
+  }
+  function toggleQuiz(){ state.quiz.shown = !state.quiz.shown; renderQuiz(); }
+  function go(d){ const n = state.quiz.idx + d; if (n < 0 || n >= state.quiz.list.length) return; state.quiz.idx = n; state.quiz.shown = false; renderQuiz(); }
+  function markQuiz(v){
+    const q = state.quiz.list[state.quiz.idx]; if (!q) return;
+    marks[q.id] = v; store.set('qb.marks', marks); updateCounts();
+    if (state.quiz.idx < state.quiz.list.length - 1) go(1); else renderQuiz();
+  }
+  $('#shuffleBtn').onclick = () => { buildQuiz(true); renderQuiz(); };
+  $('#orderBtn').onclick = () => { buildQuiz(false); renderQuiz(); };
+  document.addEventListener('keydown', e => {
+    if (state.tab !== 'quiz' || e.target.matches('input,select,textarea')) return;
+    if (e.key === ' '){ e.preventDefault(); toggleQuiz(); }
+    else if (e.key === 'ArrowRight') go(1);
+    else if (e.key === 'ArrowLeft') go(-1);
+    else if (e.key === '1') markQuiz('known');
+    else if (e.key === '2') markQuiz('unknown');
+  });
+
+  // ---------- wrong note ----------
+  function renderWrong(){
+    const list = Q.filter(q => marks[q.id] === 'unknown');
+    $('#wrongInfo').textContent = `몰랐음으로 표시한 ${list.length}문항`;
+    $('#wrongList').innerHTML = list.length ? list.map(q => cardHTML(q, state.open.has(q.id))).join('')
+      : '<div class="empty">아직 오답이 없어요. 문제를 풀면서 "몰랐음"을 누르면 여기에 모입니다.</div>';
+  }
+  bindList($('#wrongList'), () => renderWrong());
+  $('#wrongQuiz').onclick = () => { state.quiz.onlyWrong = true; buildQuiz(true); switchTab('quiz', true); };
+  $('#resetMarks').onclick = () => { if (confirm('알았음/몰랐음 기록을 모두 지울까요?')){ marks = {}; store.set('qb.marks', marks); updateCounts(); refresh(true); } };
+
+  // ---------- tabs & counts ----------
+  function updateCounts(){
+    const k = Object.values(marks).filter(v => v==='known').length;
+    const u = Object.values(marks).filter(v => v==='unknown').length;
+    $('#wrongCount').textContent = u ? u : '';
+    $('#stats').innerHTML = `<span>푼 문제 <b>${k+u}</b> / ${Q.length}</span><span>알았음 <b>${k}</b></span><span>몰랐음 <b>${u}</b></span>`;
+  }
+  function switchTab(t, keepQuiz){
+    state.tab = t;
+    document.querySelectorAll('.tab').forEach(b => b.setAttribute('aria-selected', b.dataset.tab === t));
+    ['bank','quiz','wrong'].forEach(x => $('#tab-'+x).hidden = x !== t);
+    document.querySelector('.filters').hidden = t === 'wrong';
+    if (t === 'quiz' && !keepQuiz){ state.quiz.onlyWrong = false; buildQuiz(false); }
+    store.set('qb.tab', t);
+    refresh(false);
+  }
+  document.querySelectorAll('.tab').forEach(b => b.onclick = () => switchTab(b.dataset.tab));
+  function refresh(filterChanged){
+    if (filterChanged){ bankLimit = PAGE; if (state.tab === 'quiz'){ state.quiz.onlyWrong = false; buildQuiz(false); } }
+    if (state.tab === 'bank') renderBank();
+    else if (state.tab === 'quiz') renderQuiz();
+    else renderWrong();
+  }
+
+  updateCounts();
+  switchTab(store.get('qb.tab', 'bank'));
+})();
+</script>
+</body>
+</html>
